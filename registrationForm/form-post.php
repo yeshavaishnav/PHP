@@ -1,5 +1,4 @@
 <?php
-
 include_once 'database.php';
 session_start();
 function getValue($fieldName, $returntype = "")
@@ -27,7 +26,7 @@ if (isset($_POST['submit'])) {
     $account_id = insertData('customers', prepareData('account'));
     $address_id = insertData('customer_address', prepareData('address', $account_id));
     $other_id = insertOtherData($account_id);
-    
+    header('Location:display.php');
 }
 
 function insertOtherData($cust_id)

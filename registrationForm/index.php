@@ -26,7 +26,7 @@
     <body>
 
         <div class="container">
-            <form method="POST" action="index.php">
+            <form method="POST" action="">
             
             <div class="box">
             <h2>Your account details</h2>
@@ -209,7 +209,6 @@
                     </tr>
                     <tr>
                     <td colspan="2">  <input type="submit" name="submit" value="submit" id="submit">
-                    <input type="button" name="view" value="view" id="view" onclick='<?php header("Location: display.php");?>'>
                 </td>
                    
                     </tr>

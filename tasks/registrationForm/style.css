@@ -1,0 +1,18 @@
+#other
+{
+    display: none;
+}
+.error
+{
+    color: red;;
+}
+.container
+{
+    justify-content: center;
+}
+input[type="checkbox"]
+{
+    height: 20px;
+    width: 20px;
+}
+

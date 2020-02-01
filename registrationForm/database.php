@@ -29,7 +29,7 @@ function fetchData($tableName, $value, $args = "")
     $conn = connection_open();
 
     $sql = "select " . $value . " from " . $tableName . " " . $args;
-    
+
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -52,20 +52,7 @@ function joinData()
     }
 
 }
-function deleteData($cust_id)
-{
-    $conn = connection_open();
-    $sql = "DELETE customers,customer_address,customer_additional_info FROM customers
-            LEFT JOIN customer_address ON customers.cust_id = customer_address.cust_id
-            LEFT JOIN customer_additional_info ON customers.cust_id = customer_additional_info.cust_id WHERE customers.cust_id = " . $cust_id;
 
-    if (mysqli_query($conn, $sql)) {
-        return true;
-
-    } else {
-        echo mysqli_error($conn);
-    }
-}
 function fetchRow($cust_id, $tableName)
 {
     $conn = connection_open();
@@ -80,24 +67,19 @@ function updateData($tableName, $data, $cust_id)
     $conn = connection_open();
     if ($tableName == 'customer_additional_info') {
         $flag = false;
-        
+
         foreach ($data as $key => $value) {
-            $query = "UPDATE " . $tableName . " SET `value` = " . $value . " WHERE cust_id = " . $cust_id . " and `key` = '" . $key."'";
+            $query = "UPDATE " . $tableName . " SET `value` = " . $value . " WHERE cust_id = " . $cust_id . " and `key` = '" . $key . "'";
             if (mysqli_query($conn, $query)) {
-                
+
                 $flag = true;
-            }
-            else
-            {
+            } else {
                 $flag = false;
             }
         }
-        if($flag)
-        {
+        if ($flag) {
             return true;
-        }
-        else
-        {
+        } else {
             return mysqli_error($conn);
         }
     }
@@ -114,7 +96,17 @@ function updateData($tableName, $data, $cust_id)
     } else {
         return mysqli_error($conn);
     }
-
 }
- 
+function deleteData($cust_id)
+{
+    $conn = connection_open();
+    $sql = "DELETE customers,customer_address,customer_additional_info FROM customers
+            LEFT JOIN customer_address ON customers.cust_id = customer_address.cust_id
+            LEFT JOIN customer_additional_info ON customers.cust_id = customer_additional_info.cust_id WHERE customers.cust_id = " . $cust_id;
+    if (mysqli_query($conn, $sql)) {
+        return true;
 
+    } else {
+        echo mysqli_error($conn);
+    }
+}

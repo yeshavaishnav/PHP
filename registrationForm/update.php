@@ -7,7 +7,7 @@ $cust_id = $_SESSION['last_id'];
 $conn = connection_open();
 $account = fetchRow($cust_id, 'customers');
 $address = fetchRow($cust_id, 'customer_address');
-$other = fetchData('customer_additional_info', '*', 'where cust_id = ' .$cust_id);
+$other = fetchData('customer_additional_info', '*', 'where cust_id = ' . $cust_id);
 $otherArray = array();
 while ($row = mysqli_fetch_assoc($other)) {
     array_push($otherArray, $row);
@@ -56,7 +56,7 @@ $otherdata = convertData($valueArray);
     </script>
     </head>
     <body>
-
+        <h2>Edit your information</h2>
         <div class="container">
             <form method="POST" action="">
 
@@ -200,10 +200,22 @@ foreach ($country as $value):
                     <tr>
                         <td>How long have you been in business? </td>
                         <td>
-                        <input type="radio" name="business[]" value="Under 1 year" id="r1" <?php if ($otherdata[3] == "Under 1 year") echo 'checked'; ?>><label for="r1">Under 1 year</label>
-                        <input type="radio" name="business[]" value="1-2 years" id="r2" <?php if ($otherdata[3] == "1-2 years") echo 'checked'; ?>><label for="r2">1-2 years</label>
-                        <input type="radio" name="business[]" value="2-5 years" id="r3" <?php if ($otherdata[3] == "2-5 years") echo 'checked'; ?>><label for="r3">2-5 years</label>
-                        <input type="radio" name="business[]" value="Over 10 years" id="r4" <?php if ($otherdata[3] == "Over 10 years") echo 'checked'; ?>><label for="r4">Over 10 years</label>
+                        <input type="radio" name="business[]" value="Under 1 year" id="r1" <?php if ($otherdata[3] == "Under 1 year") {
+    echo 'checked';
+}
+?>><label for="r1">Under 1 year</label>
+                        <input type="radio" name="business[]" value="1-2 years" id="r2" <?php if ($otherdata[3] == "1-2 years") {
+    echo 'checked';
+}
+?>><label for="r2">1-2 years</label>
+                        <input type="radio" name="business[]" value="2-5 years" id="r3" <?php if ($otherdata[3] == "2-5 years") {
+    echo 'checked';
+}
+?>><label for="r3">2-5 years</label>
+                        <input type="radio" name="business[]" value="Over 10 years" id="r4" <?php if ($otherdata[3] == "Over 10 years") {
+    echo 'checked';
+}
+?>><label for="r4">Over 10 years</label>
 
                         </td>
                     </tr>
@@ -215,7 +227,10 @@ foreach ($country as $value):
 $clients = ['1-5', '6-10', '11-15', '15+'];?>
                     <?php foreach ($clients as $value): ?>
 
-                            <option value="<?php echo $value; ?>" <?php if($value == $otherdata[4]){ echo 'selected';}else echo "";?>><?php echo $value;?></option>
+                            <option value="<?php echo $value; ?>" <?php if ($value == $otherdata[4]) {echo 'selected';} else {
+    echo "";
+}
+?>><?php echo $value; ?></option>
                             <?php endforeach;?>
                             </select>
 
@@ -224,10 +239,34 @@ $clients = ['1-5', '6-10', '11-15', '15+'];?>
                     <tr>
                     <td>How do you like us to get in touch with you?</td>
                     <td>
-                    <input type="checkbox" name="contact[]" id="post" value="post" <?php if(is_array($otherdata[5])){ if(in_array("post", $otherdata[5])) echo "checked='checked'";}else{if($otherdata[5] == "post") echo "checked";} ?>><label for="post">Post</label>
-                    <input type="checkbox" name="contact[]" id="email" value="email"  <?php if(is_array($otherdata[5])){ if(in_array("email", $otherdata[5])) echo "checked='checked'";}else{if($otherdata[5] == "email") echo "checked";} ?>><label for="email">email</label>
-                    <input type="checkbox" name="contact[]" id="sms" value="sms"<?php if(is_array($otherdata[5])){ if(in_array("sms", $otherdata[5])) echo "checked='checked'";}else{if($otherdata[5] == "sms") echo "checked";} ?> ><label for="sms">sms</label>
-                    <input type="checkbox" name="contact[]" id="phone" value="phone" <?php if(is_array($otherdata[5])){ if(in_array("phone", $otherdata[5])) echo "checked='checked'";}else{if($otherdata[5] == "phone") echo "checked";} ?>><label for="phone">phone</label>
+                    <input type="checkbox" name="contact[]" id="post" value="post" <?php if (is_array($otherdata[5])) {if (in_array("post", $otherdata[5])) {
+    echo "checked='checked'";
+}
+} else {if ($otherdata[5] == "post") {
+    echo "checked";
+}
+}?>><label for="post">Post</label>
+                    <input type="checkbox" name="contact[]" id="email" value="email"  <?php if (is_array($otherdata[5])) {if (in_array("email", $otherdata[5])) {
+    echo "checked='checked'";
+}
+} else {if ($otherdata[5] == "email") {
+    echo "checked";
+}
+}?>><label for="email">email</label>
+                    <input type="checkbox" name="contact[]" id="sms" value="sms"<?php if (is_array($otherdata[5])) {if (in_array("sms", $otherdata[5])) {
+    echo "checked='checked'";
+}
+} else {if ($otherdata[5] == "sms") {
+    echo "checked";
+}
+}?> ><label for="sms">sms</label>
+                    <input type="checkbox" name="contact[]" id="phone" value="phone" <?php if (is_array($otherdata[5])) {if (in_array("phone", $otherdata[5])) {
+    echo "checked='checked'";
+}
+} else {if ($otherdata[5] == "phone") {
+    echo "checked";
+}
+}?>><label for="phone">phone</label>
 
                 </td>
                     </tr>
@@ -237,7 +276,10 @@ $clients = ['1-5', '6-10', '11-15', '15+'];?>
                     <select name="hobbies[]" multiple>
                     <?php $hobbies = ['Listening to music', 'travelling', 'blogging', 'sports', 'art'];?>
                     <?php foreach ($hobbies as $value): ?>
-                    <option value="<?php echo $value; ?>" <?php if($value == $otherdata[6]){ echo 'selected';}else echo "";?> ><?php echo $value; ?></option>
+                    <option value="<?php echo $value; ?>" <?php if ($value == $otherdata[6]) {echo 'selected';} else {
+    echo "";
+}
+?> ><?php echo $value; ?></option>
                     <?php endforeach;?>
                     </select>
                     </td>
@@ -249,7 +291,7 @@ $clients = ['1-5', '6-10', '11-15', '15+'];?>
                     </tr>
             </table>
         </div>
-        
+
 
          </form>
          </div>

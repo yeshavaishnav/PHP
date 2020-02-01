@@ -1,6 +1,8 @@
 <?php require_once 'database.php';?>
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 <form method='POST'>
 <table border='1' cellpadding='10px'>
@@ -9,37 +11,32 @@
 while ($row = mysqli_fetch_assoc($result)):
 ?>
 
-    <td><?php $id = $row['cust_id'];echo $row['cust_id']; ?></td>
+    <td><?php $id = $row['cust_id'];
+echo $row['cust_id'];?></td>
     <td><?php echo $row['fname'] . " " . $row['lname']; ?></td>
     <td><?php echo $row['city']; ?></td>
     <td><?php echo $row['GET_IN']; ?></td>
     <td><?php echo $row['HOBBY']; ?></td>
-    <td><input type="submit" name="<?php echo $id;?>" value="edit"></td>
-    <td><input type="submit" name="<?php echo $id;?>" value="delete"></td>
+    <td><input type="submit" name="<?php echo $id; ?>" value="edit"></td>
+    <td><input type="submit" name="<?php echo $id; ?>" value="delete"></td>
    </tr>
 <?php endwhile;?>
-<?php 
+<?php
 session_start();
-$last_id = array_search('edit',$_POST);
+$last_id = array_search('edit', $_POST);
 $_SESSION['last_id'] = $last_id;
-if($last_id!="")
-{
-header('Location:update.php');
+if ($last_id != "") {
+    header('Location:update.php');
 
 }
-$delete_id = array_search('delete',$_POST);
+$delete_id = array_search('delete', $_POST);
 $_SESSION['delete_id'] = $delete_id;
-if($delete_id!="")
-{
-   if( deleteData($delete_id))
-   {
-       //echo "Record at id : ".$delete_id." deleted successfully";
-       header('Location: display.php');
-   }
+if ($delete_id != "") {
+    if (deleteData($delete_id)) {
+        //echo "Record at id : ".$delete_id." deleted successfully";
+        header('Location: display.php');
+    }
 }
-
-
-
 ?>
 </table>
 </form>

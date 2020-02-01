@@ -1,18 +1,14 @@
-#other
-{
-    display: none;
+#other {
+  display: none;
 }
-.error
-{
-    color: red;;
+.error {
+  color: red;
 }
-.container
-{
-    justify-content: center;
+input[type="checkbox"] {
+  height: 18px;
+  width: 18px;
 }
-input[type="checkbox"]
+table
 {
-    height: 20px;
-    width: 20px;
+  border-collapse: collapse;
 }
-

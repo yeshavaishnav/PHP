@@ -1,9 +1,7 @@
 <?php require_once 'database.php';?>
-
 <html>
 <head></head>
 <body>
-
 <form method='POST'>
 <table border='1' cellpadding='10px'>
     <tr><th>Customer ID</th><th>FullName</th><th>City</th><th>Get in touch via </th><th>Hobbies</th><th>Edit</th><th>Delete</th></tr>
@@ -29,6 +27,18 @@ if($last_id!="")
 header('Location:update.php');
 
 }
+$delete_id = array_search('delete',$_POST);
+$_SESSION['delete_id'] = $delete_id;
+if($delete_id!="")
+{
+   if( deleteData($delete_id))
+   {
+       //echo "Record at id : ".$delete_id." deleted successfully";
+       header('Location: display.php');
+   }
+}
+
+
 
 ?>
 </table>

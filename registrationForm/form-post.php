@@ -29,6 +29,19 @@ if (isset($_POST['submit'])) {
     header('Location:display.php');
 }
 
+    if(isset($_POST['update']))
+    {
+        $account = getData('account');
+        $address = getData('address');
+        $other = getData('other');
+       
+       if(updateData('customers',$account,$_SESSION['last_id']) && updateData('customer_address',$address,$_SESSION['last_id']) && updateData('customer_additional_info',$other,$_SESSION['last_id']))
+       {
+           header('Location:display.php');
+       }
+    
+    }
+
 function insertOtherData($cust_id)
 {
     $otherData = getData('other');

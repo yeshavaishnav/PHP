@@ -1,0 +1,5 @@
+Array combine: 
+
+used to comine multiple arrays 
+
+array_comine($arr1,$arr2,[...,$arr3..])

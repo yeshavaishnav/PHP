@@ -35,7 +35,7 @@ require_once 'database.php';
             <tr>
             <?php
 
-$result = fetchData('blog_post', '*', "where user_id = '" . $_SESSION['user_id'] . "'");
+$result = fetchData('blog_post', '*');
 if (@mysqli_num_rows($result) == 0) {
     echo "No blogs yet !";
 } else {
@@ -46,8 +46,8 @@ if (@mysqli_num_rows($result) == 0) {
                 <td><?php echo $row[2]; ?></td>
                 <td><?php echo $row[6]; ?></td>
                 <td>
-                    <input type="submit" name="edit" value="Edit">
-                    <input type="submit" name="delete" value="Delete">
+                    <input type="submit" name="<?php echo $row['id'];?>" value="Edit">
+                    <input type="submit" name="<?php echo $row['id'];?>" value="Delete">
                 </td>
 </tr>
 <?php endwhile;}?>

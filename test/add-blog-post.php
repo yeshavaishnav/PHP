@@ -36,10 +36,14 @@
                     <td><label for="bcategory">Category</label></td>
                     <td><select name="bcategory" multiple>
                         <?php 
-                        $category = ['electronics','entertainment','politics'];
-                        foreach($category as $key=>$value):?>
-                        <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
-                        <?php endforeach;?>
+                        $conn = connection_open();
+                        $sql = "SELECT ctitle from category";
+                        $result = mysqli_query($conn,$sql);
+                       
+                       while($row = mysqli_fetch_assoc($result)):
+                       ?>
+                        <option value="<?php echo $row['ctitle']; ?>"><?php echo $row['ctitle']; ?></option>
+                        <?php endwhile?>
                     </select></td>
                 </tr>
                 <tr>

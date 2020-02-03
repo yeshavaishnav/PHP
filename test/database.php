@@ -40,13 +40,43 @@ function fetchData($tableName, $value, $args = "")
 
     $sql = "select " . $value . " from " . $tableName . " " . $args;
 
-    $result = mysqli_query($conn, $sql);
+    if($result = mysqli_query($conn, $sql))
+    {
 
     if (mysqli_num_rows($result) > 0) {
         return $result;
 
     } else {
         echo mysqli_error($conn);
+    }
+}
+}
+function deleteData($tableName,$id)
+{
+    $conn = connection_open();
+    $sql = "DELETE FROM ".$tableName." WHERE id = '".$id."'";
+    if (mysqli_query($conn, $sql)) {
+        return true;
+
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+function updateData($tableName, $data, $user_id)
+{
+    $conn = connection_open();
+    $preparedString;
+    $dataArray = array();
+    foreach ($data as $key => $value) {
+        array_push($dataArray, $key . "=" . $value);
+    }
+
+    $preparedString = implode(',', $dataArray);
+    $query = "UPDATE " . $tableName . " SET " . $preparedString . " WHERE cust_id = " . $user_id;
+    if (mysqli_query($conn, $query)) {
+        return true;
+    } else {
+        return mysqli_error($conn);
     }
 }
 ?>

@@ -8,7 +8,18 @@
     <title>Register</title>
   </head>
   <body>
-      
+      <?php
+      $conn = connection_open();
+$query = "SELECT * FROM user where user_id = ".$_SESSION['user_id'];
+$otherArray = array();
+if($result = mysqli_query($conn,$query))
+{
+    $row = mysqli_fetch_row($result);
+}
+
+
+
+?>
     <form method="POST" action="">
       <h2 align="center">REGISTER</h2>
       <table align="center" cellpadding="10px">
@@ -22,7 +33,10 @@
                   $prefixArray =['Mr','Miss','Mrs'];
                   foreach($prefixArray as $value):
               ?>
-              <option value="<?php echo $value;?>"><?php echo $value;?></option>
+              <option value="<?php echo $value;?>" <?php if ($value == $row[1]) {echo 'selected';} else {
+    echo "";
+}
+?>><?php echo $value;?></option>
                   <?php endforeach;  ?>
             </select>
           </td>
@@ -32,7 +46,7 @@
             <label for="firstname">First Name</label>
           </td>
           <td>
-            <input type="text" name="firstname" id="firstname" />
+            <input type="text" name="firstname" id="firstname" value="<?php echo $row[2];?>"/>
           </td>
         </tr>
         <tr>
@@ -40,7 +54,7 @@
             <label for="last">Last Name</label>
           </td>
           <td>
-            <input type="text" name="lastname" id="lastname" />
+            <input type="text" name="lastname" id="lastname" value="<?php echo $row[3];?>"/>
           </td>
         </tr>
         <tr>
@@ -48,7 +62,7 @@
             <label for="email">Email</label>
           </td>
           <td>
-            <input type="text" name="email" id="email" />
+            <input type="text" name="email" id="email" value="<?php echo $row[5];?>"/>
           </td>
         </tr>
         <tr>
@@ -56,7 +70,7 @@
             <label for="mobile">Mobile Number</label>
           </td>
           <td>
-            <input type="text" name="mobile" id="mobile" />
+            <input type="text" name="mobile" id="mobile" value="<?php echo $row[4];?>"/>
           </td>
         </tr>
         <tr>
@@ -64,7 +78,7 @@
             <label for="password">Password</label>
           </td>
           <td>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" value="<?php echo $row[6];?>"/>
           </td>
         </tr>
         <tr>
@@ -72,7 +86,7 @@
             <label for="cpassword">Confirm Password</label>
           </td>
           <td>
-            <input type="password" name="cpassword" id="cpassword" />
+            <input type="password" name="cpassword" id="cpassword" value="<?php echo $row[6];?>"/>
           </td>
         </tr>
         <tr>
@@ -80,12 +94,12 @@
             <label for="information">Information</label>
           </td>
           <td>
-            <textarea rows="4" cols="20" name="information"> </textarea>
+            <textarea rows="4" cols="20" name="information"><?php echo $row[7];?></textarea>
           </td>
         </tr>
         
         <tr>
-            <td colspan="2" align="center"><input type="submit" name="edit" id="edit" value="EDIT"></td>
+            <td colspan="2" align="center"><input type="submit" name="update" id="update" value="UPDATE"></td>
         </tr>
       </table>
     </form>

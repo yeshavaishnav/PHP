@@ -29,20 +29,21 @@ require_once('database.php');
                 <th>Created Date</th>
                 <th>Actions</th>
 </tr>
-<tr>
+
                 <?php
             $result = fetchData('category', '*', "where user_id = '" . $_SESSION['user_id'] . "'");
 if (mysqli_num_rows($result) == 0) {
     echo "No categories yet !";
 } else {
     while ($row = mysqli_fetch_row($result)): ?>
+    <tr>
     <td><?php echo $row[0]; ?></td>
     <td><?php echo $row[6]; ?></td>
     <td><?php echo $row[2]; ?></td>
     <td><?php echo $row[7]; ?></td>
-    <td><input type="submit" name="cedit" value="Edit">
-<input type="submit" name="cdelete" value="Delete"></td>
-                
+    <td><input type="submit" name="<?php echo $row['id'];?>" value="cEdit">
+<input type="submit" name="<?php echo $row['id'];?>" value="cDelete"></td>
+    </tr>   
                                   
     <?php endwhile; }?>
         </table>

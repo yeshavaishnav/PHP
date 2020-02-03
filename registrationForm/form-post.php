@@ -10,23 +10,29 @@ function setValueToSession($section, $fieldName)
 {
     $_SESSION[$section][$fieldName] = isset($_POST[$fieldName]) ? $_POST[$fieldName] : "";
 }
+
 $attributes = array('account' => array('prefix', 'fname', 'lname', 'dob', 'phone', 'email', 'password'),
     'address' => array('addr1', 'addr2', 'company', 'city', 'state', 'country', 'postalCode'),
     'other' => array('description', 'profile', 'certificate', 'business', 'client', 'contact', 'hobbies'));
 
 if (isset($_POST['submit'])) {
+    $flag = 0;
     foreach ($attributes as $key => $value) {
         foreach ($value as $item) {
             $result = validate($item);
-            if ($result == "") {
-                setValueToSession($key, $item);
+            if ($result == "Data valid") {
+                $flag = 1;
             }
+
         }
     }
-    $account_id = insertData('customers', prepareData('account'));
-    $address_id = insertData('customer_address', prepareData('address', $account_id));
-    $other_id = insertOtherData($account_id);
-    header('Location:display.php');
+    if ($flag == 1) {
+        $account_id = insertData('customers', prepareData('account'));
+        $address_id = insertData('customer_address', prepareData('address', $account_id));
+        $other_id = insertOtherData($account_id);
+        header('Location:display.php');
+    }
+
 }
 
 if (isset($_POST['update'])) {
@@ -51,6 +57,7 @@ function insertOtherData($cust_id)
     }
     return $other_id;
 }
+
 function prepareData($section, $cust_id = "")
 {
     $data = getData($section);
@@ -86,6 +93,7 @@ function getData($section)
     }
     return $sectionData[$section];
 }
+
 function validate($fieldName)
 {
     switch ($fieldName) {
@@ -141,6 +149,6 @@ function validate($fieldName)
                 return $contactError;
             }
             break;
-        default:return "";
+        default:return "Data valid";
     }
 }

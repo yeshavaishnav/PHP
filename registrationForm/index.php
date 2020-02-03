@@ -132,7 +132,7 @@ foreach ($country as $value):
                             <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
                             <?php endforeach;?>
                             </select>
-                            <span><?php echo validate('country'); ?></span>
+                            
                     </td>
                     </tr>
                     <tr>

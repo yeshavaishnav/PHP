@@ -17,6 +17,15 @@ function connection_open()
 function insertData($tableName, $values)
 {
     $conn = connection_open();
+    $query = "SELECT * FROM ".$tableName;
+    $result = mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) == 0)
+    {
+        $sql = "ALTER TABLE ".$tableName." AUTO_INCREMENT = 1";
+        mysqli_query($conn,$sql);
+        
+    }
+    
     $query = "INSERT INTO " . $tableName . "(" . $values[0] . ") VALUES (" . $values[1] . ")";
     if (mysqli_query($conn, $query)) {
         return mysqli_insert_id($conn);
@@ -39,7 +48,15 @@ function fetchData($tableName, $value, $args = "")
         echo mysqli_error($conn);
     }
 }
-
+function fetchRow($cust_id, $tableName)
+{
+    $conn = connection_open();
+    $sql = "select * from " . $tableName . " where cust_id = " . $cust_id;
+    if ($result = mysqli_query($conn, $sql)) {
+        $row = mysqli_fetch_row($result);
+        return $row;
+    }
+}
 function joinData()
 {
     $conn = connection_open();
@@ -53,25 +70,14 @@ function joinData()
 
 }
 
-function fetchRow($cust_id, $tableName)
-{
-    $conn = connection_open();
-    $sql = "select * from " . $tableName . " where cust_id = " . $cust_id;
-    if ($result = mysqli_query($conn, $sql)) {
-        $row = mysqli_fetch_row($result);
-        return $row;
-    }
-}
 function updateData($tableName, $data, $cust_id)
 {
     $conn = connection_open();
     if ($tableName == 'customer_additional_info') {
         $flag = false;
-
         foreach ($data as $key => $value) {
             $query = "UPDATE " . $tableName . " SET `value` = " . $value . " WHERE cust_id = " . $cust_id . " and `key` = '" . $key . "'";
             if (mysqli_query($conn, $query)) {
-
                 $flag = true;
             } else {
                 $flag = false;

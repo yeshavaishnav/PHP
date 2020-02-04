@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 05:41 PM
+-- Generation Time: Feb 04, 2020 at 09:21 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.8
 
@@ -46,11 +46,9 @@ CREATE TABLE `blog_post` (
 --
 
 INSERT INTO `blog_post` (`id`, `user_id`, `btitle`, `bcategory`, `burl`, `bcontent`, `bimage`, `publishedAt`, `createdAt`, `updatedAt`) VALUES
-(1, 0, 'blog title', '', 'blog url', 'blog content', '', '2020-03-02', '03:02:2020 16:35:52', ' '),
-(2, 0, 'blog title', '', 'blog url', 'blog content', '', '2020-03-02', '03:02:2020 16:40:42', ' '),
-(3, 0, 'blog title', '', 'qwer', 'fgh', '', '2020-02-03', '03:02:2020 16:41:23', ' '),
-(4, 0, 'blog title', '', 'demo', 'demo', '', '2020-02-03', '03:02:2020 17:02:00', ' '),
-(5, 1, 'blog title', '', 'demo', 'demo', '', '2020-02-03', '03:02:2020 17:05:52', ' ');
+(1, 0, '', '', '', '', '', '', '04:02:2020 08:00:43', ' '),
+(2, 0, '', '', '', '', '', '', '04:02:2020 08:02:56', ' '),
+(3, 1, 'benefits of fruits', 'healthy food', 'www.fruits.com', 'fruits are healthy', '', '2020-02-01', '04:02:2020 08:07:58', ' ');
 
 -- --------------------------------------------------------
 
@@ -60,7 +58,6 @@ INSERT INTO `blog_post` (`id`, `user_id`, `btitle`, `bcategory`, `burl`, `bconte
 
 CREATE TABLE `category` (
   `id` int(5) NOT NULL,
-  `user_id` int(5) NOT NULL,
   `parent_category_id` int(5) NOT NULL,
   `ctitle` varchar(30) NOT NULL,
   `metatitle` varchar(30) NOT NULL,
@@ -75,13 +72,9 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `user_id`, `parent_category_id`, `ctitle`, `metatitle`, `curl`, `ccontent`, `cimage`, `createdAt`, `updatedAt`) VALUES
-(1, 0, 0, 'Lifestyle', 'demo', 'demo', 'content', '', '03:02:2020 15:54:15', ''),
-(2, 0, 0, 'Lifestyle', 'demo title', 'demo url', 'demo content', '', '03:02:2020 15:54:32', ''),
-(3, 0, 0, 'enterntainment', '123', 'demo', 'demo', '', '03:02:2020 15:59:06', ''),
-(4, 0, 0, '', 'newcategory', 'new', 'new', '', '03:02:2020 17:13:57', ' '),
-(5, 0, 0, '', 'metatitle', 'lifestyle', 'lifestyle', '', '03:02:2020 17:17:00', ' '),
-(6, 1, 0, '', 'asdf', 'asd', 'life', '', '03:02:2020 17:23:53', ' ');
+INSERT INTO `category` (`id`, `parent_category_id`, `ctitle`, `metatitle`, `curl`, `ccontent`, `cimage`, `createdAt`, `updatedAt`) VALUES
+(1, 0, 'healthy food', 'heathy food', 'www.health.com', 'eat healthy food', '', '04:02:2020 07:53:43', ' '),
+(4, 0, '', '', '', '', '', '04:02:2020 07:58:45', ' ');
 
 -- --------------------------------------------------------
 
@@ -144,13 +137,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog_post`
 --
 ALTER TABLE `blog_post`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`

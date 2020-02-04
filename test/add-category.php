@@ -13,9 +13,9 @@
             <h2 align="center">Add new category</h2>
             <table align="center" cellpadding="10px">
                 <tr>
-                    <td><label for="title">Title</label></td>
+                    <td><label for="ctitle">Title</label></td>
                     <td>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="ctitle" id="ctitle">
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                         <?php 
                         $category = ['electronics','entertainment','politics'];
                         foreach($category as $key=>$value):?>
-                        <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                        <option value="<?php $i = 1; $i; $_SESSION['parent'] = $i; $i++;?>"><?php echo $value; ?></option>
                         <?php endforeach;?>
                     </select></td>
                 </tr>

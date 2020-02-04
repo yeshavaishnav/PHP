@@ -6,7 +6,7 @@ function getPostData($section)
 {
     $attributes = array('user' => array('prefix', 'firstname', 'lastname', 'email', 'mobile', 'password', 'lastLoginAt', 'information', 'createdAt', 'updatedAt'),
         'category' => array( 'ctitle', 'ccontent', 'curl', 'metatitle', 'parent_category_id', 'cimage', 'createdAt', 'updatedAt'),
-        'blog_post' => array( 'btitle', 'bcontent', 'burl', 'publishedAt', 'bcategory', 'bimage', 'createdAt', 'updatedAt'),
+        'blog_post' => array( 'user_id','btitle', 'bcontent', 'burl', 'publishedAt', 'bcategory', 'bimage', 'createdAt', 'updatedAt'),
     );
     $data = array();
 
@@ -14,10 +14,15 @@ function getPostData($section)
         if ($value == 'lastLoginAt' || $value == 'createdAt' || $value == 'updatedAt') {
             $data[$value] = "' '";
         }
-        
-        if ($value == 'parent_category_id') {
-            $data[$value] = "'" . $_SESSION['category_id'] . " '";
-        } else {
+        if($value == 'parent_category_id')
+        {
+            $data[$value] = $_SESSION['parent'];
+        }
+        if($value == 'user_id')
+        {
+            $data[$value] = $_SESSION['user_id'];
+        }
+         else {
             if (isset($_POST[$value])) {
                 $data[$value] = "'" . $_POST[$value] . "'";
             }
@@ -70,8 +75,8 @@ if (isset($_POST['register'])) {
 
 }
 if (isset($_POST['addcategory'])) {
-    $_SESSION['category_id'] = insertData('category', prepareData(getPostData('category')));
-    if (insertData('category', prepareData(getPostData('category')))) {
+    
+    if ($_SESSION['category_id'] = insertData('category', prepareData(getPostData('category')))) {
         header('Location: blog-category.php');
     }
 
@@ -85,28 +90,21 @@ if (isset($_POST['manage'])) {
 if (isset($_POST['addblog'])) {
     header('Location:add-blog-post.php');
 }
-if (isset($_POST['addblogpost'])) {
-    
-    if((insertData('blog_post', prepareData(getPostData('blog_post')))))
-    {
-        header('Location:blog-post.php');
-    }
-      
-}
+
 if (isset($_POST['profile'])) {
     header('Location: profile.php');
 }
-if (isset($_POST['edit'])) {
-    header('Location: blog-post.php');
-}
-if(isset($_POST['update']))
-{
-    updateData('user',prepareData(getPostData('user')),$_SESSION['user_id']);
-}
+
+
 if(isset($_POST['logout']))
 {
     session_destroy();
     header('Location: login.php');
 }
-
+if(isset($_POST['addblogpost']))
+{
+     if ($_SESSION['post_id'] = insertData('blog_post', prepareData(getPostData('blog_post')))) {
+        header('Location: blog-post.php');
+     }
+}
 

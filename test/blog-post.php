@@ -42,12 +42,12 @@ if (@mysqli_num_rows($result) == 0) {
     while ($row = mysqli_fetch_row($result)): ?>
 
                 <td><?php echo $row[0]; ?></td>
-                <td><?php ?></td>
+                <td><?php echo $row[3];?></td>
                 <td><?php echo $row[2]; ?></td>
-                <td><?php echo $row[6]; ?></td>
+                <td><?php echo $row[7]; ?></td>
                 <td>
-                    <input type="submit" name="<?php echo $row['id'];?>" value="Edit">
-                    <input type="submit" name="<?php echo $row['id'];?>" value="Delete">
+                    <input type="submit" name="<?php echo $row['id'];?>" value="Edit Post">
+                    <input type="submit" name="<?php echo $row['id'];?>" value="Delete Post">
                 </td>
 </tr>
 <?php endwhile;}?>

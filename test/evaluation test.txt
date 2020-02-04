@@ -1,0 +1,22 @@
+Tables: 
+1. user (unique email id)
+2. category
+3. blog_post
+4. post_category
+
+
+Pages: 
+1. login
+2. register
+3. blog post
+4. blog category
+5. add new category
+6. add new blog post
+
+register -> blog post
+manage category -> blog category
+add category -> add new category
+add blogpost -> add new blog post
+
+
+edit,delete

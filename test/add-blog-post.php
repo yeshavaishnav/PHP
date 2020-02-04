@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td><label for="burl">Url</label></td>
-                    <td><input type="btext" name="burl" id="url"></td>
+                    <td><input type="text" name="burl" id="url"></td>
                 </tr>
                 <tr>
                     <td>
@@ -50,7 +50,7 @@
                     <td>
                         <label for="bimage">Image</label>
                     </td>
-                    <td><input type="file" accept="image/*" name="bimage"></td>
+                    <td><input type="file" accept="images/*" name="bimage"></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">

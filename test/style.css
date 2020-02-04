@@ -1,4 +1,32 @@
-.right
-{
-    float: right;
+.right {
+  float: right;
 }
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+input[type="submit"]
+{
+    height: 30px;
+    width: max-content;
+    
+}
+body
+{
+    font-family: 'Arial';
+    color: black;
+    
+}
+input[type="text"], input[type="password"]
+{
+    height: 25px;
+    width: 175px;
+}
+input[type="checkbox"]
+{
+    height: 18px;
+    width: 18px;
+}
+
+

@@ -1,11 +1,13 @@
 <?php
-  require_once('database.php');
-  require_once('data-handler.php');
+require_once 'database.php';
+require_once 'data-handler.php';
+
 ?>
 
 <html>
   <head>
     <title>Register</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <form method="POST" action="">
@@ -18,11 +20,11 @@
           <td>
             <select name="prefix">
               <?php
-                  $prefixArray =['Mr','Miss','Mrs'];
-                  foreach($prefixArray as $value):
-              ?>
-              <option value="<?php echo $value;?>"><?php echo $value;?></option>
-                  <?php endforeach;  ?>
+$prefixArray = ['Mr', 'Miss', 'Mrs'];
+foreach ($prefixArray as $value):
+?>
+              <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
+                  <?php endforeach;?>
             </select>
           </td>
         </tr>

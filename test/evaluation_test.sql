@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2020 at 09:21 AM
+-- Generation Time: Feb 04, 2020 at 05:45 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.8
 
@@ -32,13 +32,13 @@ CREATE TABLE `blog_post` (
   `id` int(5) NOT NULL,
   `user_id` int(5) NOT NULL,
   `btitle` varchar(20) NOT NULL,
-  `bcategory` varchar(20) NOT NULL,
+  `bcategory` varchar(50) NOT NULL,
   `burl` varchar(30) NOT NULL,
   `bcontent` varchar(50) NOT NULL,
   `bimage` varchar(20) NOT NULL,
   `publishedAt` varchar(20) NOT NULL,
-  `createdAt` varchar(20) NOT NULL,
-  `updatedAt` varchar(20) NOT NULL
+  `createdAt` varchar(30) NOT NULL,
+  `updatedAt` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,9 +46,8 @@ CREATE TABLE `blog_post` (
 --
 
 INSERT INTO `blog_post` (`id`, `user_id`, `btitle`, `bcategory`, `burl`, `bcontent`, `bimage`, `publishedAt`, `createdAt`, `updatedAt`) VALUES
-(1, 0, '', '', '', '', '', '', '04:02:2020 08:00:43', ' '),
-(2, 0, '', '', '', '', '', '', '04:02:2020 08:02:56', ' '),
-(3, 1, 'benefits of fruits', 'healthy food', 'www.fruits.com', 'fruits are healthy', '', '2020-02-01', '04:02:2020 08:07:58', ' ');
+(1, 1, 'benefits of fruits', 'diet', 'nutrition', 'fruits provide vitamins', '', '2020-02-04', '04:02:2020 15:24:21', ' '),
+(2, 3, 'computer science', 'computer science', 'w3schools', 'programming languages', '', '2020-02-04', '04:02:2020 16:27:30', ' ');
 
 -- --------------------------------------------------------
 
@@ -73,8 +72,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `parent_category_id`, `ctitle`, `metatitle`, `curl`, `ccontent`, `cimage`, `createdAt`, `updatedAt`) VALUES
-(1, 0, 'healthy food', 'heathy food', 'www.health.com', 'eat healthy food', '', '04:02:2020 07:53:43', ' '),
-(4, 0, '', '', '', '', '', '04:02:2020 07:58:45', ' ');
+(1, 1, 'diet', 'health related tips', 'www.nutritionfood.com', 'health tips', '1.jpg', ' ', ' '),
+(2, 5, 'computer science', 'learn to program', 'learn-basic-computer-science', 'programming language', '2.jpg', '04:02:2020 15:35:05', ' '),
+(3, 4, 'mobile phones', 'compare various devices', 'gadget360', 'smart phones', '3.jpg', '04:02:2020 15:35:59', ' ');
 
 -- --------------------------------------------------------
 
@@ -101,11 +101,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `prefix`, `firstname`, `lastname`, `mobile`, `email`, `password`, `lastLoginAt`, `information`, `createdAt`, `updatedAt`) VALUES
-(1, 'Miss', 'yesha', 'vaishnav', 9825015979, 'yeshavaishnav@gmail.com', '123', ' ', 'intern ', '03:02:2020 15:00:22', ' '),
-(5, 'Mr', 'rajiv', 'vaishnav', 9428860632, 'rajiv@vaishnavs.com', '123', ' ', 'freelancer ', '03:02:2020 15:47:22', ' '),
-(6, 'Mrs', 'ushma', 'vaishnav', 9428725327, 'urvaishnav@gmail.com', '123', ' ', 'housewife ', '03:02:2020 16:14:58', ' '),
-(7, 'Mr', 'rajiv', 'vaishnav', 9428860632, 'rajiv@vaishnavs.com', '123', ' ', 'freelancer ', '03:02:2020 16:59:03', ' '),
-(8, 'Mr', 'rajiv', 'vaishnav', 9428860632, 'rajiv@vaishnavs.com', '123', ' ', 'freelancer ', '03:02:2020 16:59:03', ' ');
+(1, 'Miss', 'yesha', 'vaishnav', 9825015979, 'yeshavaishnav@gmail.com', '123', '04:02:2020 15:23:50', 'student ', '04:02:2020 15:07:02', '04:02:2020 15:00:02'),
+(3, 'Miss', 'misha', 'vaishnav', 9662443248, 'vaishnavmisha@gmail.com', '123', ' ', 'student ', ' ', '04:02:2020 15:04:47'),
+(5, 'Mrs', 'ushma', 'vaishnav', 9428725327, 'urvaishnav@gmail.com', '123', ' ', 'housewife ', '04:02:2020 16:31:38', ' ');
 
 --
 -- Indexes for dumped tables
@@ -137,7 +135,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog_post`
 --
 ALTER TABLE `blog_post`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -149,7 +147,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

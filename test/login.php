@@ -1,15 +1,11 @@
 <?php
-require_once('data-handler.php');
-
+require_once 'data-handler.php';
 
 ?>
-
-
-
-
 <html>
   <head>
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <form method="POST">

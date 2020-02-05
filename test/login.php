@@ -1,6 +1,5 @@
 <?php
 require_once 'data-handler.php';
-
 ?>
 <html>
   <head>

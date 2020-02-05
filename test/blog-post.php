@@ -22,8 +22,9 @@ if(@$_SESSION['user_id']=="")
         <input type="submit" id="profile" name="profile" value="My Profile">
         <input type="submit" id="logout" name="logout" value="Log Out">
 </div>
+<div>
     <input type="submit" name="addblog" id="addblogpost" value="Add Blog Post">
-    <br><br>
+    
     
         <table border="1" cellpadding="10px">
             <tr>
@@ -32,9 +33,7 @@ if(@$_SESSION['user_id']=="")
                 <th>Title</th>
                 <th>Published Date</th>
                 <th>Actions</th>
-
             </tr>
-
             <tr>
             <?php
 
@@ -44,7 +43,7 @@ if (@mysqli_num_rows($result) == 0) {
 } else {
     while ($row = mysqli_fetch_row($result)): ?>
 
-                <td><?php echo $row[0]; ?></td>
+                <td><a href="" name="<?php echo $row[0];?>" value="view_id"><?php echo $row[0]; ?></a></td>
                 <td><?php echo $row[3]; ?></td>
                 <td><?php echo $row[2]; ?></td>
                 <td><?php echo $row[7]; ?></td>
@@ -56,7 +55,7 @@ if (@mysqli_num_rows($result) == 0) {
 <?php endwhile;}?>
         </table>
 </form>
-
+</div>
 <?php
 $deletepost_id = array_search('Delete Post', $_POST);
 $_SESSION['deletepost_id'] = $deletepost_id;
@@ -73,6 +72,8 @@ if ($editpost_id != "") {
     header('Location:edit-blog-post.php');
 
 }
+
+
 ?>
 </body>
 </html>

@@ -1,10 +1,9 @@
 <?php
 require_once 'database.php';
 require_once 'data-handler.php';
-if(@$_SESSION['user_id']=="")
+if(!isset($_SESSION['user_id']))
 {
-    header('Location:login.php');
-    
+    header('Location:login.php');    
 }
 ?>
 

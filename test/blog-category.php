@@ -14,18 +14,19 @@ if(@$_SESSION['user_id']=="")
         <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div>
         <h2>Blog Category</h2>
 <form method="POST">
-    <input type="submit" name="add" id="addcategory" value="Add Category">
-    <br><br>
+    
+ 
 
     <div class="right">
         <input type="submit"  id="manage" name="manage" value="Manage Category">
         <input type="submit" id="profile" name="profile" value="My Profile">
         <input type="submit" id="logout" name="logout" value="Log Out">
     </div>
-
+    <div>
+    <input type="submit" name="add" id="addcategory" value="Add Category">
         <table border="1" cellpadding="10px">
 
             <tr>
@@ -53,7 +54,7 @@ if (@mysqli_num_rows($result) == 0) {
 
     <?php endwhile;}?>
         </table>
-
+</div>
 <?php
 $deletecategory_id = array_search('Delete Category', $_POST);
 $_SESSION['deletecategory_id'] = $deletecategory_id;

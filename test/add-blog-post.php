@@ -3,11 +3,9 @@ require_once 'database.php';
 require_once 'data-handler.php';
 if(@$_SESSION['user_id']=="")
 {
-    header('Location:login.php');
-    
+    header('Location:login.php');    
 }
 ?>
-
 <html>
     <head>
         <title>Add new blog post</title>
@@ -41,13 +39,12 @@ if(@$_SESSION['user_id']=="")
                     <td><label for="bcategory">Category</label></td>
                     <td><select name="bcategory[]" multiple>
                         <?php
-$conn = connection_open();
-$sql = "SELECT * from category";
-$result = mysqli_query($conn, $sql);
+                        $conn = connection_open();
+                        $sql = "SELECT * from category";
+                        $result = mysqli_query($conn, $sql);
 
-while ($row = mysqli_fetch_assoc($result)):
-?>
-
+                        while ($row = mysqli_fetch_assoc($result)):
+                        ?>
                         <option value="<?php echo $row['ctitle']; ?>" name="<?php echo $row['id']; ?>"><?php echo $row['ctitle']; ?></option>
                         <?php endwhile?>
                     </select></td>

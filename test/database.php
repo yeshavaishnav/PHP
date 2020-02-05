@@ -23,7 +23,13 @@ function insertData($tableName, $values)
         mysqli_query($conn, $sql);
 
     }
-
+    $query = "SELECT * FROM user WHERE email = '".$_POST['email']."'";
+    $result = mysqli_query($conn,$query);
+    if(mysqli_num_rows($result)>0)
+    {
+        echo "Email already exists";
+        return false;
+    }
     $query = "INSERT INTO " . $tableName . "(" . $values[0] . ") VALUES (" . $values[1] . ")";
     if (mysqli_query($conn, $query)) {
         return mysqli_insert_id($conn);

@@ -1,19 +1,16 @@
 <?php
-
 require_once 'database.php';
 session_start();
 function getPostData($section)
 {
     $attributes = array('user' => array('prefix', 'firstname', 'lastname', 'email', 'mobile', 'password', 'lastLoginAt', 'information', 'createdAt', 'updatedAt'),
-        'category' => array('ctitle', 'ccontent', 'curl', 'metatitle', 'parent_category_id', 'cimage', 'createdAt', 'updatedAt'),
-        'blog_post' => array('user_id', 'btitle', 'bcontent', 'burl', 'publishedAt', 'bcategory', 'bimage', 'createdAt', 'updatedAt'),
+    'category' => array('ctitle', 'ccontent', 'curl', 'metatitle', 'parent_category_id', 'cimage', 'createdAt', 'updatedAt'),
+    'blog_post' => array('user_id', 'btitle', 'bcontent', 'burl', 'publishedAt', 'bcategory', 'bimage', 'createdAt', 'updatedAt'),
     );
     $data = array();
 
     foreach ($attributes[$section] as $value) {
-        if ($value == 'lastLoginAt' || $value == 'createdAt' || $value == 'updatedAt') {
-            $data[$value] = "' '";
-        }
+        
         if ($value == 'parent_category_id') {
             $data[$value] = "'" . $_SESSION['parent'] . "'";
         }
@@ -31,23 +28,18 @@ function getPostData($section)
                 $data[$value] = "'" . $_POST[$value] . "'";
             }
         }
-        
-    }
 
+    }
     return $data;
 }
 function prepareData($data)
 {
     $time_now = date('d:m:Y H:i:s', time());
-    $data['createdAt'] = "'" . $time_now . "'";
     $key = implode(',', array_keys($data));
     $value = implode(',', array_values($data));
     $dataArray = array($key, $value);
     return $dataArray;
 }
-
-
-
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -57,7 +49,9 @@ if (isset($_POST['login'])) {
     $dbpassword = $row[6];
     $_SESSION['user_id'] = $row[0];
     if ($password == $dbpassword) {
-        
+        $loginTime = date('d:m:Y H:i:s',time());
+        $data = array('lastLoginAt'=>"'".$loginTime."'");
+        updateData('user',$data,$_SESSION['user_id']);
         header('Location: blog-post.php');
     } else {
         echo "Incorrect Password";
@@ -69,12 +63,11 @@ if (isset($_POST['reg'])) {
 }
 if (isset($_POST['register'])) {
     if (isset($_POST['tandc'])) {
-      
-        $user_id = insertData('user', prepareData(getPostData('user')));
-
-        $_SESSION['user_id'] = $user_id;
-        if (insertData('user', prepareData(getPostData('user')))) {
            
+        if ( $_SESSION['user_id'] = insertData('user', prepareData(getPostData('user')))) {
+            $createTime = date('d:m:Y H:i:s',time());
+            $data = array('createdAt'=>"'".$createTime."'");
+            updateData('user',$data,$_SESSION['user_id']);
             header('Location: blog-post.php');
         }
 
@@ -134,8 +127,10 @@ if (isset($_POST['addblogpost'])) {
         $dataArray = array('post_id,category_id', $data);
         insertData('post_category', $dataArray);
     }
+    $createTime = date('d:m:Y H:i:s',time());
+            $data = array('createdAt'=>"'".$createTime."'");
+            updateData('blog_post',$data,$_SESSION['post_id']);
     header('Location:blog-post.php');
-
 }
 if (isset($_POST['editblogpost'])) {
     echo updateData('blog_post', getPostData('blog_post'), $_SESSION['editpost_id']);
@@ -144,7 +139,6 @@ if (isset($_POST['editblogpost'])) {
 }
 if (isset($_POST['parent'])) {
     $_SESSION['parent'] = $_POST['parent'];
-   
 }
 if (isset($_POST['editcategory'])) {
     if (updateData('category', getPostData('category'), $_SESSION['editcategory_id'])) {

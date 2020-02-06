@@ -4,7 +4,6 @@
 table {
   border-collapse: collapse;
   border: 1px solid black;
-  
 }
 .data
 {
@@ -22,16 +21,20 @@ body
   font-family:  'Segoe UI';
   color: black;
 }
-input[type="text"], input[type="password"], input[type="date"],select
+input[type="text"], input[type="password"], input[type="date"]
 {
     height: 25px;
-    width: 200px;
+    width: 300px;
     border: 0.5px solid black;
 }
-
+select
+{
+  width: 300px;
+  border: 0.5px solid black;
+}
 textarea
 {
-  width: 200px;
+  width: 300px;
   border: 0.5px solid black;
 }
 input[type="checkbox"]
@@ -45,10 +48,9 @@ input[type="submit"]
   width: 150px;
   border: none;
 }
-#login,#register,#add,#update
+#login,#register,#add,#update,#edit
 {
   background-color: rgb(42, 123, 245);
-  
 }
 h2
 {
@@ -68,7 +70,8 @@ h2
 }
 .container
 {
-  margin: 50px;
+  margin: 50px; 
+  
 }
 
 

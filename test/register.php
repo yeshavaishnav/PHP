@@ -11,7 +11,7 @@ require_once 'data-handler.php';
   </head>
   <body>
     <form method="POST" action="">
-      
+
       <table align="center" cellpadding="10px">
         <tr>
           <td colspan="2">
@@ -38,7 +38,7 @@ foreach ($prefixArray as $value):
             <label for="firstname">First Name</label>
           </td>
           <td>
-            <input type="text" name="firstname" id="firstname" />
+            <input type="text" name="firstname" id="firstname" required/>
           </td>
         </tr>
         <tr>
@@ -46,7 +46,7 @@ foreach ($prefixArray as $value):
             <label for="last">Last Name</label>
           </td>
           <td>
-            <input type="text" name="lastname" id="lastname" />
+            <input type="text" name="lastname" id="lastname" required />
           </td>
         </tr>
         <tr>
@@ -54,7 +54,7 @@ foreach ($prefixArray as $value):
             <label for="email">Email</label>
           </td>
           <td>
-            <input type="text" name="email" id="email" />
+            <input type="text" name="email" id="email" required/>
           </td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@ foreach ($prefixArray as $value):
             <label for="mobile">Mobile Number</label>
           </td>
           <td>
-            <input type="text" name="mobile" id="mobile" />
+            <input type="text" name="mobile" id="mobile" required/>
           </td>
         </tr>
         <tr>
@@ -70,7 +70,7 @@ foreach ($prefixArray as $value):
             <label for="password">Password</label>
           </td>
           <td>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" required/>
           </td>
         </tr>
         <tr>
@@ -78,7 +78,7 @@ foreach ($prefixArray as $value):
             <label for="cpassword">Confirm Password</label>
           </td>
           <td>
-            <input type="password" name="cpassword" id="cpassword" />
+            <input type="password" name="cpassword" id="cpassword" required/>
           </td>
         </tr>
         <tr>

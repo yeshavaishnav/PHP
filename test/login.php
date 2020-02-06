@@ -16,7 +16,7 @@ require_once 'data-handler.php';
         <tr>
           <td>
             <label for="email">Email</label><br />
-            <input type="text" name="email" id="email" />
+            <input type="text" name="email" id="email"/>
           </td>
         </tr>
         <tr>

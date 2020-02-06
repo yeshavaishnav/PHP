@@ -1,9 +1,8 @@
 <?php
 require_once 'database.php';
 require_once 'data-handler.php';
-if(!isset($_SESSION['user_id']))
-{
-    header('Location:login.php');    
+if (!isset($_SESSION['user_id'])) {
+    header('Location:login.php');
 }
 ?>
 
@@ -48,7 +47,7 @@ foreach ($prefixArray as $value):
             <label for="firstname">First Name</label>
           </td>
           <td>
-            <input type="text" name="firstname" id="firstname" value="<?php echo $row[2]; ?>"/>
+            <input type="text" name="firstname" id="firstname" value="<?php echo $row[2]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -56,7 +55,7 @@ foreach ($prefixArray as $value):
             <label for="last">Last Name</label>
           </td>
           <td>
-            <input type="text" name="lastname" id="lastname" value="<?php echo $row[3]; ?>"/>
+            <input type="text" name="lastname" id="lastname" value="<?php echo $row[3]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -64,7 +63,7 @@ foreach ($prefixArray as $value):
             <label for="email">Email</label>
           </td>
           <td>
-            <input type="text" name="email" id="email" value="<?php echo $row[5]; ?>"/>
+            <input type="text" name="email" id="email" value="<?php echo $row[5]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -72,7 +71,7 @@ foreach ($prefixArray as $value):
             <label for="mobile">Mobile Number</label>
           </td>
           <td>
-            <input type="text" name="mobile" id="mobile" value="<?php echo $row[4]; ?>"/>
+            <input type="text" name="mobile" id="mobile" value="<?php echo $row[4]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -80,7 +79,7 @@ foreach ($prefixArray as $value):
             <label for="password">Password</label>
           </td>
           <td>
-            <input type="password" name="password" id="password" value="<?php echo $row[6]; ?>"/>
+            <input type="password" name="password" id="password" value="<?php echo $row[6]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -88,7 +87,7 @@ foreach ($prefixArray as $value):
             <label for="cpassword">Confirm Password</label>
           </td>
           <td>
-            <input type="password" name="cpassword" id="cpassword" value="<?php echo $row[6]; ?>"/>
+            <input type="password" name="cpassword" id="cpassword" value="<?php echo $row[6]; ?>" required/>
           </td>
         </tr>
         <tr>
@@ -105,5 +104,6 @@ foreach ($prefixArray as $value):
         </tr>
       </table>
     </form>
+   
   </body>
 </html>

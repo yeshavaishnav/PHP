@@ -1,6 +1,6 @@
 <?php
-require_once('data-handler.php');
-require_once('database.php');
+require_once 'data-handler.php';
+require_once 'database.php';
 ?>
 <html>
     <head>
@@ -8,20 +8,16 @@ require_once('database.php');
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    <div class="right">
-        <input type="submit"  id="manage" name="manage" value="Manage Category">
-        <input type="submit" id="profile" name="profile" value="My Profile">
-        <input type="submit" id="logout" name="logout" value="Log Out">
-    </div>
+
     <div>
         <table border="1" cellpadding="10px">
             <tr>
-            <?php 
-            $conn = connection_open();
-            $query = 'SELECT * FROM blog_post WHERE id = '.$_GET['view_id'];
-            $result = mysqli_query($conn,$query);
-            $row = mysqli_fetch_row($result);
-            ?>
+            <?php
+$conn = connection_open();
+$query = 'SELECT * FROM blog_post WHERE id = ' . $_GET['view_id'];
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_row($result);
+?>
                 <th>ID</th>
                 <th>Blog title</th>
                 <th>Category</th>
@@ -37,7 +33,7 @@ require_once('database.php');
            <td><?php echo $row[5]; ?></td>
            <td><img src="<?php echo $row[6]; ?>" height="40px" width="40px"></td>
            </tr>
-                  
+
         </table>
         </div>
 </body>

@@ -23,12 +23,21 @@ function insertData($tableName, $values)
         mysqli_query($conn, $sql);
 
     }
-    $query = "SELECT * FROM user WHERE email = '".$_POST['email']."'";
-    $result = mysqli_query($conn,$query);
-    if(mysqli_num_rows($result)>0)
-    {
-        echo "Email already exists";
-        return false;
+    if ($tableName == 'user') {
+        $query = "SELECT * FROM user WHERE email = '" . $_POST['email'] . "'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            echo "Email already exists";
+            return false;
+        }
+    }
+    if ($tableName == 'blog_post') {
+        $query = "SELECT * FROM blog_post WHERE burl = '" . $_POST['burl'] . "'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            echo "Url already exists";
+            return false;
+        }
     }
     $query = "INSERT INTO " . $tableName . "(" . $values[0] . ") VALUES (" . $values[1] . ")";
     if (mysqli_query($conn, $query)) {
@@ -79,15 +88,14 @@ function updateData($tableName, $data, $user_id)
     foreach ($data as $key => $value) {
         array_push($dataArray, $key . "=" . $value);
     }
-    
+
     $preparedString = implode(',', $dataArray);
-    
+
     if ($tableName == 'user') {
         $query = "UPDATE " . $tableName . " SET " . $preparedString . " WHERE user_id = " . $user_id;
     } else {
         $query = "UPDATE " . $tableName . " SET " . $preparedString . " WHERE id = " . $user_id;
     }
-    
     if (mysqli_query($conn, $query)) {
         return true;
     } else {

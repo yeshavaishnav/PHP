@@ -26,8 +26,8 @@ if (@$_SESSION['user_id'] == "") {
     </div>
     <input type="submit" name="add" id="addcategory" value="Add Category">
     <div class="container">
-    
-        
+
+
 
                 <?php
 $result = fetchData('category', '*');
@@ -54,14 +54,13 @@ if (@mysqli_num_rows($result) == 0) {
     <td><a href="edit-category.php?editcategory_id='<?php echo $row[0]; ?>'">Edit</a>
     <a href="blog-category.php?deletecategory_id=<?php echo $row[0]; ?>">Delete</a>
     </tr>
-    <?php endwhile;} ?>
+    <?php endwhile;}?>
  </table>
 </div>
 <?php
-if(isset($_GET['deletecategory_id']))
-{
-   deleteData('category',$_GET['deletecategory_id']);
-   header('Location: blog-category.php');
+if (isset($_GET['deletecategory_id'])) {
+    deleteData('category', $_GET['deletecategory_id']);
+    header('Location: blog-category.php');
 }
 ?>
 </form>

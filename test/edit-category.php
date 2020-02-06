@@ -2,10 +2,9 @@
 require_once 'database.php';
 require_once 'data-handler.php';
 
-if(@$_SESSION['user_id']=="")
-{
+if (@$_SESSION['user_id'] == "") {
     header('Location:login.php');
-    
+
 }
 
 $_SESSION['editcategory_id'] = $_GET['editcategory_id'];
@@ -68,7 +67,7 @@ $category = ['electronics', 'entertainment', 'politics', 'education', 'healthcar
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="editcategory" value="EDIT">
+                        <input type="submit" name="editcategory" value="EDIT" id="edit">
                     </td>
                 </tr>
             </table>

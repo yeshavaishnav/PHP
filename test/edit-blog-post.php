@@ -84,7 +84,7 @@ $conn = connection_open();
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="editblogpost" value="edit">
+                        <input type="submit" name="editblogpost" value="EDIT" id="edit">
                     </td>
                 </tr>
             </table>

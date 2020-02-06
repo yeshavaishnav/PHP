@@ -23,10 +23,6 @@ if (@$_SESSION['user_id'] == "") {
 </div>
 <input type="submit" name="addblog" id="addblogpost" value="Add Blog Post">
 <div class="container">
-
-
-
-
             <?php
 
 $result = fetchData('blog_post', '*', 'where user_id = ' . $_SESSION['user_id']);
@@ -37,7 +33,7 @@ if (@mysqli_num_rows($result) == 0) {
             <tr>
                 <th>Post ID</th>
                 <th>Category Name</th>
-                <th>Title</th>
+                <th>Post Title</th>
                 <th>Published Date</th>
                 <th>Actions</th>
             </tr>

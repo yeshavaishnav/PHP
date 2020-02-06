@@ -54,7 +54,7 @@ $i++; ?>"><?php echo $value; ?></option>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="addcategory" value="submit">
+                        <input type="submit" name="addcategory" value="submit" id="add">
                     </td>
                 </tr>
             </table>

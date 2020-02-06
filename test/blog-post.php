@@ -2,10 +2,9 @@
 
 require_once 'data-handler.php';
 require_once 'database.php';
-if(@$_SESSION['user_id']=="")
-{
+if (@$_SESSION['user_id'] == "") {
     header('Location:login.php');
-    
+
 }
 ?>
 <html>
@@ -22,11 +21,19 @@ if(@$_SESSION['user_id']=="")
         <input type="submit" id="profile" name="profile" value="My Profile">
         <input type="submit" id="logout" name="logout" value="Log Out">
 </div>
-<div>
-    <input type="submit" name="addblog" id="addblogpost" value="Add Blog Post">
-    
-    
-        <table border="1" cellpadding="10px">
+<input type="submit" name="addblog" id="addblogpost" value="Add Blog Post">
+<div class="container">
+
+
+
+
+            <?php
+
+$result = fetchData('blog_post', '*', 'where user_id = ' . $_SESSION['user_id']);
+if (@mysqli_num_rows($result) == 0) {
+    echo "No blogs yet !";
+} else {?>
+    <table border="1" cellpadding="10px" class="data">
             <tr>
                 <th>Post ID</th>
                 <th>Category Name</th>
@@ -34,46 +41,29 @@ if(@$_SESSION['user_id']=="")
                 <th>Published Date</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-            <?php
 
-$result = fetchData('blog_post', '*','where user_id = '.$_SESSION['user_id']);
-if (@mysqli_num_rows($result) == 0) {
-    echo "No blogs yet !";
-} else {
-    while ($row = mysqli_fetch_row($result)): ?>
 
-                <td><a href="" name="<?php echo $row[0];?>" value="view_id"><?php echo $row[0]; ?></a></td>
+    <?php while ($row = mysqli_fetch_row($result)): ?>
+        <tr>
+                <td><a href="view.php?view_id=<?php echo $row[0]; ?>"><?php echo $row[0]; ?></a></td>
                 <td><?php echo $row[3]; ?></td>
                 <td><?php echo $row[2]; ?></td>
                 <td><?php echo $row[7]; ?></td>
                 <td>
-                    <input type="submit" name="<?php echo $row[0]; ?>" value="Edit Post">
-                    <input type="submit" name="<?php echo $row[0]; ?>" value="Delete Post">
+                <a href="edit-blog-post.php?editblog_id='<?php echo $row[0]; ?>'">Edit</a>
+                <a href="blog-post.php?deleteblog_id=<?php echo $row[0]; ?>">Delete</a>
                 </td>
 </tr>
 <?php endwhile;}?>
         </table>
-</form>
-</div>
+        </div>
 <?php
-$deletepost_id = array_search('Delete Post', $_POST);
-$_SESSION['deletepost_id'] = $deletepost_id;
-if ($deletepost_id != "") {
-    if (deleteData('blog_post', $deletepost_id) && deleteData('post_category', $deletepost_id)) {
-
-        header('Location: blog-post.php');
-    }
+if (isset($_GET['deleteblog_id'])) {
+    deleteData('blog_post', $_GET['deleteblog_id']);
+    deleteData('post_category', $_GET['deleteblog_id']);
+    header('Location: blog-post.php');
 }
-
-$editpost_id = array_search('Edit Post', $_POST);
-$_SESSION['editpost_id'] = $editpost_id;
-if ($editpost_id != "") {
-    header('Location:edit-blog-post.php');
-
-}
-
-
 ?>
+</form>
 </body>
 </html>

@@ -2,10 +2,9 @@
 require_once 'data-handler.php';
 require_once 'database.php';
 
-if(@$_SESSION['user_id']=="")
-{
+if (@$_SESSION['user_id'] == "") {
     header('Location:login.php');
-    
+
 }
 ?>
 <html>
@@ -17,63 +16,54 @@ if(@$_SESSION['user_id']=="")
 <div>
         <h2>Blog Category</h2>
 <form method="POST">
-    
- 
+
+
 
     <div class="right">
         <input type="submit"  id="manage" name="manage" value="Manage Category">
         <input type="submit" id="profile" name="profile" value="My Profile">
         <input type="submit" id="logout" name="logout" value="Log Out">
     </div>
-    <div>
     <input type="submit" name="add" id="addcategory" value="Add Category">
-        <table border="1" cellpadding="10px">
-
-            <tr>
-            <th>Category ID</th>
-                <th>Category Image</th>
-                <th>Category Name</th>
-                <th>Created Date</th>
-                <th>Actions</th>
-</tr>
+    <div class="container">
+    
+        
 
                 <?php
 $result = fetchData('category', '*');
 if (@mysqli_num_rows($result) == 0) {
     echo "No categories yet !";
-} else {
-    while ($row = mysqli_fetch_row($result)): ?>
+} else {?>
+
+    <table border="1" cellpadding="10px" class="data">
+
+    <tr>
+    <th>Category ID</th>
+        <th>Category Image</th>
+        <th>Category Name</th>
+        <th>Created Date</th>
+        <th>Actions</th>
+</tr>
+
+    <?php while ($row = mysqli_fetch_row($result)): ?>
     <tr>
     <td><?php echo $row[0]; ?></td>
     <td><img src="<?php echo $row[6]; ?>" height="40px" width="40px"></td>
     <td><?php echo $row[2]; ?></td>
     <td><?php echo $row[7]; ?></td>
-    <td><input type="submit" name="<?php echo $row[0]; ?>" value="Edit Category">
-<input type="submit" name="<?php echo $row[0]; ?>" value="Delete Category"></td>
+    <td><a href="edit-category.php?editcategory_id='<?php echo $row[0]; ?>'">Edit</a>
+    <a href="blog-category.php?deletecategory_id=<?php echo $row[0]; ?>">Delete</a>
     </tr>
-
-    <?php endwhile;}?>
-        </table>
+    <?php endwhile;} ?>
+ </table>
 </div>
 <?php
-$deletecategory_id = array_search('Delete Category', $_POST);
-$_SESSION['deletecategory_id'] = $deletecategory_id;
-if ($deletecategory_id != "") {
-    if (deleteData('category', $deletecategory_id)) {
-
-        header('Location: blog-category.php');
-    }
-}
-
-$editcategory_id = array_search('Edit Category', $_POST);
-$_SESSION['editcategory_id'] = $editcategory_id;
-if ($editcategory_id != "") {
-    header('Location:edit-category.php');
-
+if(isset($_GET['deletecategory_id']))
+{
+   deleteData('category',$_GET['deletecategory_id']);
+   header('Location: blog-category.php');
 }
 ?>
-
-
 </form>
 </body>
 </html>

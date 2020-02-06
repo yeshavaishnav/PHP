@@ -7,6 +7,8 @@ if(@$_SESSION['user_id']=="")
     header('Location:login.php');
     
 }
+
+$_SESSION['editcategory_id'] = $_GET['editcategory_id'];
 ?>
 
 <html>
@@ -18,7 +20,7 @@ if(@$_SESSION['user_id']=="")
 
     <?php
 $conn = connection_open();
-$query = "SELECT * FROM category where id = " . $_SESSION['editcategory_id'];
+$query = "SELECT * FROM category where id = " . $_GET['editcategory_id'];
 
 if ($result = mysqli_query($conn, $query)) {
     if ($row = mysqli_fetch_row($result)) {

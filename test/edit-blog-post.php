@@ -2,10 +2,9 @@
 require_once 'database.php';
 require_once 'data-handler.php';
 
-if(@$_SESSION['user_id']=="")
-{
+if (@$_SESSION['user_id'] == "") {
     header('Location:login.php');
-    
+
 }
 ?>
 
@@ -17,16 +16,15 @@ if(@$_SESSION['user_id']=="")
     <body>
 
     <?php
+
 $conn = connection_open();
-$query = "SELECT * FROM blog_post where id = " . $_SESSION['editpost_id'];
+$_SESSION['editblog_id'] = $_GET['editblog_id'];
+$query = "SELECT * FROM blog_post where id = " . $_SESSION['editblog_id'];
 
 if ($result = mysqli_query($conn, $query)) {
     if ($row = mysqli_fetch_row($result)) {
 
         ?>
-
-
-
         <form method="POST" action="edit-blog-post.php">
             <h2 align="center">Edit blog post</h2>
             <table align="center" cellpadding="10px">

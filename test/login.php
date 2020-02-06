@@ -8,8 +8,11 @@ require_once 'data-handler.php';
   </head>
   <body>
     <form method="POST">
-      <h2 align="center">LOGIN</h2>
-      <table cellpadding="10px" align="center">
+      <div class="login">
+      <table cellpadding="10px" align="center" class="loginform">
+      <tr>
+      <td><h2 align="center">LOGIN</h2></td>
+      </tr>
         <tr>
           <td>
             <label for="email">Email</label><br />
@@ -24,11 +27,12 @@ require_once 'data-handler.php';
         </tr>
         <tr>
           <td align="center">
-            <input type="submit" name="login" value="LOGIN" />
-            <input type="submit" name="reg" value="REGISTER" />
+            <input type="submit" name="login" value="LOGIN" id="login"/>
+            <input type="submit" name="reg" value="REGISTER" id="register" />
           </td>
         </tr>
       </table>
+      </div>
     </form>
   </body>
 </html>

@@ -57,7 +57,7 @@ if(@$_SESSION['user_id']=="")
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="addblogpost" value="submit">
+                        <input type="submit" name="addblogpost" value="submit" id="add">
                     </td>
                 </tr>
             </table>

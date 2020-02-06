@@ -133,7 +133,7 @@ if (isset($_POST['addblogpost'])) {
     header('Location:blog-post.php');
 }
 if (isset($_POST['editblogpost'])) {
-    echo updateData('blog_post', getPostData('blog_post'), $_SESSION['editpost_id']);
+    updateData('blog_post', getPostData('blog_post'),$_SESSION['editblog_id']);
     
     header('Location:blog-post.php');
 }

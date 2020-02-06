@@ -11,8 +11,13 @@ require_once 'data-handler.php';
   </head>
   <body>
     <form method="POST" action="">
-      <h2 align="center">REGISTER</h2>
+      
       <table align="center" cellpadding="10px">
+        <tr>
+          <td colspan="2">
+        <h2 align="center">REGISTER</h2>
+          </td>
+        </tr>
         <tr>
           <td>
             <label for="prefix">Prefix</label>

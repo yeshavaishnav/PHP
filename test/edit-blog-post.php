@@ -2,7 +2,7 @@
 require_once 'database.php';
 require_once 'data-handler.php';
 
-if (@$_SESSION['user_id'] == "") {
+if (!isset($_SESSION['user_id'])) {
     header('Location:login.php');
 
 }
@@ -51,7 +51,7 @@ if ($result = mysqli_query($conn, $query)) {
                 </tr>
                 <tr>
                     <td><label for="bcategory">Category</label></td>
-                    <td><select name="bcategory" multiple>
+                    <td><select name="bcategory[]" multiple>
                         <?php
 $conn = connection_open();
         $sql = "SELECT ctitle from category";

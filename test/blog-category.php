@@ -2,7 +2,7 @@
 require_once 'data-handler.php';
 require_once 'database.php';
 
-if (@$_SESSION['user_id'] == "") {
+if (!isset($_SESSION['user_id'])) {
     header('Location:login.php');
 
 }

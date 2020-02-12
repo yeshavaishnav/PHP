@@ -11,7 +11,9 @@ class Post extends \Core\Controller
     public function index()
     {
         echo "Query String parameters : ";
+        echo "<pre>";
         print_r($_GET);
+        echo "</pre>";
     }
     public function edit()
     {

@@ -35,9 +35,8 @@
             "Twig_" : "lib/"
         },
         "psr-4" : {
-            "Twig\\" : "src/",
-            "Core\\" : "Core/",
-            "App\\" : "App/"       
+            "Twig\\" : "src/"
+                   
 
 
             

@@ -10,9 +10,9 @@
     },
     "autoload": {
         "psr-4" : {
-            "Twig\\" : "src/",
             "Core\\" : "Core/",
-            "App\\" : "App/"       
+            "App\\" : "App/" ,
+            "Models\\" : "Model/"      
 
         }
         }

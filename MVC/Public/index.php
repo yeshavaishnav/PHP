@@ -11,14 +11,13 @@ spl_autoload_register(function ($class) {
     }
 });
 
-
 $router = new Core\Router();
-$url = $_SERVER['QUERY_STRING'];
+
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('admin/{action}/{controller}', ['namespace' => 'Admin']);
 $router->add('{controller}/{id:\d+}/{action}');
 
+$url = $_SERVER['QUERY_STRING'];
 echo "<br>";
 $router->dispatch($url);
-echo "<br>";

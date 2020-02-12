@@ -6,6 +6,7 @@ class Router
 {
     protected $routes = [];
     protected $params = [];
+
     public function add($route, $params = [])
     {
         $route = preg_replace('/\//', '\\/', $route);
@@ -55,28 +56,28 @@ class Router
             $controller = $this->getNamespace() . $controller;
             $obj = new $controller();
             $obj->index();
-        }
+        } else {
+            if ($this->match($url)) {
+                $controller = $this->params['controller'];
+                $controller = $this->convertToStudlyCaps($controller);
+                $controller = $this->getNamespace() . $controller;
 
-        if ($this->match($url)) {
-            $controller = $this->params['controller'];
-            $controller = $this->convertToStudlyCaps($controller);
-            $controller = $this->getNamespace() . $controller;
+                if (class_exists($controller)) {
+                    $controllerObject = new $controller($this->params);
+                    $action = $this->params['action'];
+                    $action = $this->convertToCamelCase($action);
 
-            if (class_exists($controller)) {
-                $controllerObject = new $controller($this->params);
-                $action = $this->params['action'];
-                $action = $this->convertToCamelCase($action);
-
-                if (is_callable([$controllerObject, $action])) {
-                    $controllerObject->$action();
+                    if (is_callable([$controllerObject, $action])) {
+                        $controllerObject->$action();
+                    } else {
+                        echo "Method $action in controller $controller not found";
+                    }
                 } else {
-                    echo "Method $action in controller $controller not found";
+                    echo "Controller class $controller not found";
                 }
             } else {
-                echo "Controller class $controller not found";
+                echo "No route matched";
             }
-        } else {
-            echo "No route matched";
         }
     }
     protected function convertToStudlyCaps($string)

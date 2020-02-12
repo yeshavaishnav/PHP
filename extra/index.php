@@ -1,30 +1,32 @@
 <?php
-$arr =array('1'=>array());
-$i = 1;
-
-
-   
-foreach($arr as $key=>$value)
+function display()
 {
-    if($key == 1)
+    $i = 1;
+    $array= array();
+while($i<8)
+{
+    if($i<4)
     {
-        for($j =0; $j < 2; $j++)
-        {
-            $arr[$key][++$i] = array(); 
-        }
+        $array[$i] = array();
     }
     else
     {
-        foreach($value as $element=>$item){            
-        for($j =0; $j < 2; $j++)
-        {
-            $item[$j] = ++$i;  
-        }
-    }     
-        
+            for($k = 2; $k <= count($array); $k++)
+            {
+                if(count($array[$k])<2)
+                {
+                    array_push($array[$k],$i);
+                break;
+                }
+            }
+           
     }
+$i++;
 }
+$newArray = array('1' => array('2'=>$array[2],'3'=>$array[3]));
+return $newArray;
+}
+$arr = display();
 echo "<pre>";
 print_r($arr);
 echo "</pre>";
-?>

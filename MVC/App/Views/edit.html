@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Edit Post</title>
+  </head>
+  <body>
+    <form method="POST" action="update">
+      <table>
+        {% for post in posts %}
+        <tr>
+          <td><label for="title">Title</label></td>
+          <td>
+            <input type="text" name="title" id="title" value="{{post.title}}" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="content">Content</label></td>
+          <td>
+            <textarea name="content" id="content" rows="3" cols="20">
+                            {{post.content}}
+                        </textarea
+            >
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" name="edit" value="edit" /></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </form>
+  </body>
+</html>

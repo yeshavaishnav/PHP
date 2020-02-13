@@ -12,7 +12,7 @@ class Home
         // ['name'=>'Yesha',
         // 'colors'=>['red','green','blue']]
         // );
-
+    
         View::renderTemplate('Home/index.html',
             ['name' => 'Yesha',
                 'colors' => ['red', 'green', 'blue']]

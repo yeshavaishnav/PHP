@@ -69,14 +69,13 @@ class Router
 
                     if (is_callable([$controllerObject, $action])) {
                         $controllerObject->$action();
-                    } else {
-                        echo "Method $action in controller $controller not found";
-                    }
-                } else {
-                    echo "Controller class $controller not found";
+                    } 
                 }
-            } else {
-                echo "No route matched";
+            }
+            else
+            {
+               $obj = new \App\Controllers\Error();
+               $obj->display();
             }
         }
     }
@@ -109,3 +108,6 @@ class Router
         return $namespace;
     }
 }
+
+
+

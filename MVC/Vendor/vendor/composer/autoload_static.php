@@ -19,6 +19,10 @@ class ComposerStaticInit8e0113a4d184b1189b7934356067d4d5
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'M' => 
+        array (
+            'Models\\' => 7,
+        ),
         'C' => 
         array (
             'Core\\' => 5,
@@ -32,12 +36,15 @@ class ComposerStaticInit8e0113a4d184b1189b7934356067d4d5
     public static $prefixDirsPsr4 = array (
         'Twig\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
-            1 => __DIR__ . '/..' . '/twig/twig/src',
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Model',
         ),
         'Core\\' => 
         array (

@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Posts{% endblock %} {% block body %}
 <h1>Posts</h1>
-
+{% if posts %}
 <table border="1" cellpadding="10px">
   <tr>
     <th>Title</th>
@@ -21,4 +21,7 @@
   {% endfor %}
 </table>
 
+{% else %}
+<p>No Posts yet !</p>
+{% endif %}
 {% endblock %}

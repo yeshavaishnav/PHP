@@ -29,7 +29,8 @@ class Admin extends \Core\Controller
     }
     public function cmsPages()
     {
-
+        $cms = Database::getAll('cms_pages');
+        View::renderTemplate('cms.html', ['cms' => $cms]);
     }
     public function addProduct()
     {
@@ -38,6 +39,22 @@ class Admin extends \Core\Controller
     public function addCategory()
     {
         View::renderTemplate('addCategory.html');
+    }
+    public function addcms()
+    {
+        View::renderTemplate('addCMS.html');
+    }
+    public function insertcms()
+    {
+        $params = array('pageTitle', 'urlKey', 'status', 'content');
+        $values = array();
+        foreach ($params as $item) {
+            array_push($values, "'" . $_POST[$item] . "'");
+        }
+        $params = implode(',', $params);
+        $values = implode(',', $values);
+        Database::insertData('cms_pages', $params, $values);
+        header('Location:cmspages');
     }
     public function insertCategory()
     {
@@ -53,7 +70,7 @@ class Admin extends \Core\Controller
     }
     public function insertProduct()
     {
-        $params = array('productName','category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
+        $params = array('productName', 'category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
         $values = array();
         foreach ($params as $item) {
             array_push($values, "'" . $_POST[$item] . "'");
@@ -99,7 +116,7 @@ class Admin extends \Core\Controller
     }
     public function editProduct()
     {
-        $params = array('productName','category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
+        $params = array('productName', 'category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
         $values = array();
         foreach ($params as $item) {
             array_push($values, "'" . $_POST[$item] . "'");
@@ -118,6 +135,34 @@ class Admin extends \Core\Controller
         $id = $_GET['id'];
         Database::deleteData('products', $id);
         header('Location: products');
+    }
+    public function editcms()
+    {
+        $_SESSION['cms_id'] = $_GET['id'];
+        $cms = Database::getAll('cms_pages', 'WHERE id = ' . $_SESSION['cms_id']);
+        View::renderTemplate('editCMS.html', ['cms' => $cms]);
+    }
+    public function editcmspage()
+    {
+        $params = array('pageTitle', 'urlKey', 'status', 'content');
+        $values = array();
+        foreach ($params as $item) {
+            array_push($values, "'" . $_POST[$item] . "'");
+        }
+        $preparedString = array();
+        foreach ($params as $key => $value) {
+            $str = $params[$key] . " = " . $values[$key];
+            array_push($preparedString, $str);
+        }
+        $preparedString = implode(',', $preparedString);
+        Database::updateData('cms_pages', $preparedString, $_SESSION['cms_id']);
+        header('Location:cmspages');
+    }
+    public function deletecms()
+    {
+        $id = $_GET['id'];
+        Database::deleteData('cms_pages', $id);
+        header('Location: cmspages');
     }
 
 }

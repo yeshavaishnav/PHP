@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Add CMS Page {% endblock %}
+{% block body %}
+<h2>Add CMS Page</h2>
+<form method="POST" action="insertcms">
+  <table cellpadding="5px">
+    <tr>
+      <td>Page Title:</td>
+      <td><input type="text" name="pageTitle" /></td>
+    </tr>
+    <tr>
+      <td>Url Key:</td>
+      <td><input type="text" name="urlKey" /></td>
+    </tr>
+    <tr>
+      <td>Status:</td>
+      <td><input type="text" name="status" /></td>
+    </tr>
+    <tr>
+      <td>Content:</td>
+      <td><input type="text" name="content" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" name="add" value="ADD" />
+      </td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

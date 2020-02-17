@@ -1,34 +1,10 @@
-{% extends "base.html" %}
-
-{% block title%}
-
-{% for c in content %}
-{{c.pageTitle}}
-{% endfor %}
-
-{% endblock %}
-
-{% block header %}
-{% for h in header %}
+{% extends "base.html" %} {% block title%} {% for c in content %}
+{{c.pageTitle}} {% endfor %} {% endblock %} {% block header %} {% for h in
+header %}
 <a href="product\showproduct?category={{h.urlKey}}">{{h.categoryName}}</a>
-{% endfor %}
-{% endblock %}
-
-{% block body %}
-{% for c in content %}
+{% endfor %} {% endblock %} {% block body %} {% for c in content %}
 <h2>{{c.pageTitle }}</h2>
 <p>{{c.content}}</p>
-{% endfor %}
-
-{% endblock %}
-
-{% block footer %}
-{% for f in footer %}
+{% endfor %} {% endblock %} {% block footer %} {% for f in footer %}
 <a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
-{% endfor %}
-{% endblock %}
-
-
-
-
-       
+{% endfor %} {% endblock %}

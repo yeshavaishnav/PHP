@@ -1,41 +1,45 @@
 {% extends "base.html" %} {% block title %}Edit Category{% endblock %} {% block
-    body %}
-    <h2>Edit Category</h2>
-    <form method="POST" action="editcategory">
-        {% for c in category %}
-      <table cellpadding="5px">
-        <tr>
-          <td>Category name:</td>
-          <td><input type="text" name="categoryName" value="{{c.categoryName}}"/></td>
-        </tr>
-        <tr>
-          <td>Url Key:</td>
-          <td><input type="text" name="urlKey" value="{{c.urlKey}}"/></td>
-        </tr>
-        <tr>
-          <td>Image:</td>
-          <td><input type="file" name="image" accept="image/*" /></td>
-        </tr>
-        <tr>
-          <td>Status:</td>
-          <td><input type="text" name="status" value="{{c.status}}"/></td>
-        </tr>
-        <tr>
-          <td>Description:</td>
-          <td><input type="text" name="description" value="{{c.description}}"/></td>
-        </tr>
-        <tr>
-          <td>Parent:</td>
-          <td><input type="text" name="parent" value="{{c.parent}}"/></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center">
-            <input type="submit" name="edit" value="EDIT" />
-          </td>
-        </tr>
-      </table>
-      {% endfor %}
-    </form>
-    
-    {% endblock %}
-    
+body %}
+<h2>Edit Category</h2>
+<form method="POST" action="editcategory">
+  {% for c in category %}
+  <table cellpadding="5px">
+    <tr>
+      <td>Category name:</td>
+      <td>
+        <input type="text" name="categoryName" value="{{c.categoryName}}" />
+      </td>
+    </tr>
+    <tr>
+      <td>Url Key:</td>
+      <td><input type="text" name="urlKey" value="{{c.urlKey}}" /></td>
+    </tr>
+    <tr>
+      <td>Image:</td>
+      <td><input type="file" name="image" accept="image/*" /></td>
+    </tr>
+    <tr>
+      <td>Status:</td>
+      <td><input type="text" name="status" value="{{c.status}}" /></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>
+        <input type="text" name="description" value="{{c.description}}" />
+      </td>
+    </tr>
+    <tr>
+      <td>Parent:</td>
+      <td><input type="text" name="parent" value="{{c.parent}}" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" name="edit" value="EDIT" />
+      </td>
+    </tr>
+  </table>
+
+  {% endfor %}
+</form>
+
+{% endblock %}

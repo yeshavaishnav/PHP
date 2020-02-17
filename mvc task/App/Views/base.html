@@ -3,18 +3,25 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <style>
-        table
-        {
-            border-collapse: collapse;
-            margin: 10px;
-        }
-        
-
+      table {
+        border-collapse: collapse;
+        margin: 10px;
+      }
+      header,footer
+      {
+        width: 100%;
+        margin: 10px;
+        padding: 10px;
+      }
+      a{
+        padding: 10px;
+        font-size: 17px;
+      }
     </style>
   </head>
   <body>
-   <header>{%block header%}{%endblock%}</header>
-  {% block body %} {% endblock %}
-  <footer>{%block footer%}{%endblock%}</footer>
+    <header>{%block header%}{%endblock%}</header>
+    {% block body %} {% endblock %}
+    <footer>{%block footer%}{%endblock%}</footer>
   </body>
 </html>

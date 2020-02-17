@@ -19,7 +19,6 @@ class Admin extends \Core\Controller
         if ($username == 'admin' && $password == 'admin123') {
             View::render('dashboard.html');
         }
-
     }
     public function products()
     {
@@ -103,10 +102,10 @@ class Admin extends \Core\Controller
             array_push($preparedString, $str);
         }
         $timestamp = date('d:m:Y H:i:s', time());
-        array_push($preparedString,"updatedAt = '".$timestamp."'");
+        array_push($preparedString, "updatedAt = '" . $timestamp . "'");
         $preparedString = implode(',', $preparedString);
         Database::updateData('categories', $preparedString, $_SESSION['category_id']);
-        
+
         header('Location:categories');
     }
     public function deletec()
@@ -134,7 +133,7 @@ class Admin extends \Core\Controller
             array_push($preparedString, $str);
         }
         $timestamp = date('d:m:Y H:i:s', time());
-        array_push($preparedString,"updatedAt = '".$timestamp."'");
+        array_push($preparedString, "updatedAt = '" . $timestamp . "'");
         $preparedString = implode(',', $preparedString);
         Database::updateData('products', $preparedString, $_SESSION['product_id']);
         header('Location:products');
@@ -164,7 +163,7 @@ class Admin extends \Core\Controller
             array_push($preparedString, $str);
         }
         $timestamp = date('d:m:Y H:i:s', time());
-        array_push($preparedString,"updatedAt = '".$timestamp."'");
+        array_push($preparedString, "updatedAt = '" . $timestamp . "'");
         $preparedString = implode(',', $preparedString);
         Database::updateData('cms_pages', $preparedString, $_SESSION['cms_id']);
         header('Location:cmspages');

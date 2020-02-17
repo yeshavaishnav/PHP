@@ -6,10 +6,8 @@ use \Core\View;
 
 class Error
 {
-    function display()
+    public function display()
     {
         View::render('error.html');
     }
 }
-
-?>

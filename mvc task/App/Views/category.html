@@ -23,17 +23,10 @@
                     <a href="/admin/deletec?id={{c.id}}">Delete</a>
                 </td>
             </tr>
-            <!-- <div class="child">
-                <img src="\{{c.image}}" height="100px" width="100px">    
-                <h3>{{c.categoryName}}</h3>
-                {{c.parent}}
-                <br>
-                <a href="/admin/editc?id={{c.id}}">Edit</a>
-                    <a href="/admin/deletec?id={{c.id}}">Delete</a>
-            </div> -->
+            
             {%endfor%}
          </table> 
-        <!-- </div> -->
+        
         {% else %}
     <p>No categories yet!</p>
     {% endif %}  

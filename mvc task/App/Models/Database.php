@@ -6,20 +6,20 @@ use PDO;
 
 class Database extends \Core\Model
 {
-    public static function getAll($table,$condition = "")
+    public static function getAll($table, $condition = "")
     {
         try
         {
             $db = static::getDB();
-            $stmt = $db->query("SELECT * FROM ".$table ." ".$condition);
-             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $db->query("SELECT * FROM " . $table . " " . $condition);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
 
     }
-    public static function insertData($tableName,$params,$values)
+    public static function insertData($tableName, $params, $values)
     {
         try
         {
@@ -32,14 +32,14 @@ class Database extends \Core\Model
             }
 
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = "INSERT INTO ".$tableName." (".$params.") VALUES (" . $values . ")";
+            $stmt = "INSERT INTO " . $tableName . " (" . $params . ") VALUES (" . $values . ")";
             $db->exec($stmt);
 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-    public static function updateData($tableName,$preparedString,$id)
+    public static function updateData($tableName, $preparedString, $id)
     {
         try
         {
@@ -50,7 +50,7 @@ class Database extends \Core\Model
             echo "Error: " . $e->getMessage();
         }
     }
-    public static function deleteData($tableName,$id)
+    public static function deleteData($tableName, $id)
     {
         try
         {

@@ -3,39 +3,28 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <style>
-        table
-        {
-            border-collapse: collapse;
-            margin: 10px;
-        }
-        .container
-        {
-          display: flex;
-          margin: 30px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .child
-        {
-         width: 120px;
-         background-color: rgb(162, 190, 250);
-         margin: auto;
-         padding: 10px 10px;
-         align-items: center;
-         
-         
-        }
-       
-       
-
+      table {
+        border-collapse: collapse;
+        margin: 10px;
+      }
+      .container {
+        display: flex;
+        margin: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .child {
+        width: 120px;
+        background-color: rgb(162, 190, 250);
+        margin: auto;
+        padding: 10px 10px;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
-   <header>{% block header %}{% endblock %}</header>
-  {% block body %}
-  
-  
-  {% endblock %}
-  <footer>{% block footer %}{% endblock %}</footer>
+    <header>{% block header %}{% endblock %}</header>
+    {% block body %} {% endblock %}
+    <footer>{% block footer %}{% endblock %}</footer>
   </body>
 </html>

@@ -9,7 +9,7 @@ abstract class Model
 {
     protected static function getDB()
     {
-        static $db = null;
+         $db = null;
 
         if ($db == null) {
 

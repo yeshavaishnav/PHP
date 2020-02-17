@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block header %}
+{% for h in header %}
+<a href="product\showproduct?category={{h.urlKey}}">{{h.categoryName}}</a>
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+
+{%for p in products%}
+
+    <img src="\{{p.image}}" height="100px" width="100px">
+    <br>
+{{p.productName}}
+<br>
+{{p.category}}
+<br>
+{{p.status}}
+<br>
+{{p.stock}}
+<br>
+{{p.price}}
+
+
+
+{%endfor%}
+
+{% endblock %}
+
+{% block footer %}
+{% for f in footer %}
+<a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
+{% endfor %}
+{% endblock %}

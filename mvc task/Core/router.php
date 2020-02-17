@@ -1,7 +1,10 @@
 <?php
 
 namespace Core;
+use \App\Models;
+use \App\Controllers;
 
+use \App\Models\Database;
 class Router
 {
     protected $routes = [];
@@ -72,8 +75,14 @@ class Router
                     }
                 }
             } else {
-                $obj = new \App\Controllers\Error();
+
+                
+                        $page = new \App\Controllers\Page();
+                        if(!$page->display($url))
+             {
+                 $obj = new \App\Controllers\Error();
                 $obj->display();
+             }
             }
         }
     }

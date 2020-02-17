@@ -8,6 +8,10 @@ use \Core\View;
 session_start();
 class Admin extends \Core\Controller
 {
+    public function index()
+    {
+        View::render('index.html');
+    }
     public function login()
     {
         $username = $_POST['username'];

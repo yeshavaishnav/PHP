@@ -82,7 +82,8 @@ class Admin extends \Core\Controller
     {
         $params = array('productName', 'category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
         $values = array();
-        foreach ($params as $item) {
+      
+         foreach ($params as $item) {
             $val = $_POST[$item];
 
             if (is_array($val)) {
@@ -90,11 +91,17 @@ class Admin extends \Core\Controller
             }
             array_push($values, "'" . $val . "'");
         }
-
         $params = implode(',', $params);
         $values = implode(',', $values);
         $product_id = Database::insertData('products', $params, $values);
         
+        $category = Database::getAll('categories', "WHERE categoryName = '".$_POST['category']."'");
+        $category_id = $category[0]['id'];
+        
+        $parameters = "product_id,category_id";
+        $val = "'".$product_id."','".$category_id."'";
+        Database::insertData('products_categories',$parameters,$val);
+
        header('Location:products');
     }
     public function editc()
@@ -119,7 +126,6 @@ class Admin extends \Core\Controller
         array_push($preparedString, "updatedAt = '" . $timestamp . "'");
         $preparedString = implode(',', $preparedString);
         Database::updateData('categories', $preparedString, $_SESSION['category_id']);
-
         header('Location:categories');
     }
     public function deletec()
@@ -162,6 +168,7 @@ class Admin extends \Core\Controller
     {
         $id = $_GET['id'];
         Database::deleteData('products', $id);
+        Database::deleteData('products_categories',$id);
         header('Location: products');
     }
     public function editcms()

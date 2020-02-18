@@ -10,7 +10,7 @@ class Show
     public function showProduct()
     {
         $category = $_GET['category'];
-        $header = Database::getDistinct('categories','parent');
+        $header = Database::getDistinct('categories', 'parent');
         $footer = Database::getAll('cms_pages');
         $products = Database::getAll('products', "WHERE category = '" . $category . "'");
         View::renderTemplate('showproducts.html', ['header' => $header, 'products' => $products, 'footer' => $footer]);
@@ -18,7 +18,7 @@ class Show
     public function showCategories()
     {
         $category = $_GET['category'];
-        $header = Database::getDistinct('categories','parent');
+        $header = Database::getDistinct('categories', 'parent');
         $footer = Database::getAll('cms_pages');
         $categories = Database::getAll('categories', "WHERE parent = '" . $category . "'");
         View::renderTemplate('showCategories.html', ['header' => $header, 'categories' => $categories, 'footer' => $footer]);
@@ -26,7 +26,7 @@ class Show
     public function product()
     {
         $product = $_GET['product'];
-        $header = Database::getDistinct('categories','parent');
+        $header = Database::getDistinct('categories', 'parent');
         $footer = Database::getAll('cms_pages');
         $products = Database::getAll('products', "WHERE productName = '" . $product . "'");
         View::renderTemplate('productDisplay.html', ['header' => $header, 'products' => $products, 'footer' => $footer]);

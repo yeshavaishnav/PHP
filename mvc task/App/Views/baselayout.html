@@ -7,34 +7,71 @@
         border-collapse: collapse;
         margin: 10px;
       }
+
       header,
       footer {
-        width: 100%;
-        margin: 10px;
-        padding: 10px;
+        height: 50px;
+        text-align: center;
+        
       }
       a {
         padding: 10px;
         font-size: 17px;
+        text-decoration: none;
       }
       .container {
         display: flex;
         flex-direction: column;
       }
-      .content
-      {
+      .content {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
       }
-      .child
-      {
+      .child {
         width: 110px;
-        padding: 10px;
+        background-color: rgb(177, 205, 247);
+        padding: 20px;
         margin: 20px 20px;
-        border: 1px solid gray;
-        
+        border-radius: 10px;
+        box-shadow: 3px 3px rgb(255, 253, 253);
       }
+      .header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.footer a
+{
+    float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+.footer a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header,.footer
+{
+    background-color: rgb(176, 219, 245);
+}
+      
     </style>
   </head>
   <body>
@@ -43,13 +80,7 @@
         <header>{%block header%}{%endblock%}</header>
       </div>
       <div class="content">
-        
-        
-          {% block body %}
-          
-          {% endblock %}
-        
-       
+        {% block body %} {% endblock %}
       </div>
       <div class="footer">
         <footer>{%block footer%}{%endblock%}</footer>

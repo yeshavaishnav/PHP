@@ -1,18 +1,15 @@
 {% extends "base.html" %} {% block title %}Categories{% endblock %} {% block
-    header %} {% for h in header %}
-    <a href="\show\showcategories?category={{h.parent}}">{{h.parent}}</a>
-    {% endfor %} {% endblock %} {% block body %} {%for p in products%}
-    
-    <h2>{{p.productName}}</h2>
-    <img src="/{{p.image}}" height="80px" width="80px"> 
-    <br>
-    {{p.description}}
-    <br>
-    {{p.price}}
-    <br>
-    {{p.stock}}
-    
-    {%endfor%} {% endblock %} {% block footer %} {% for f in footer %}
-    <a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
-    {% endfor %} {% endblock %}
-    
+header %} {% for h in header %}
+<a href="\show\showcategories?category={{h.parent}}">{{h.parent}}</a>
+{% endfor %} {% endblock %} {% block body %} {%for p in products%}
+
+<h2>{{p.productName}}</h2>
+<img src="/{{p.image}}" height="80px" width="80px" />
+<br />
+Description : {{p.description}}
+<br />
+Price : {{p.price}}
+<br />
+Quantity : {{p.stock}} {%endfor%} {% endblock %} {% block footer %} {% for f in footer %}
+<a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
+{% endfor %} {% endblock %}

@@ -7,28 +7,19 @@
         border-collapse: collapse;
         margin: 10px;
       }
-      .container {
-        display: flex;
-        margin: 30px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .child {
-        width: 120px;
-        background-color: rgb(162, 190, 250);
-        margin: auto;
-        padding: 10px 10px;
-        align-items: center;
+      body
+      {
+        background-color: rgb(124, 165, 240);
       }
     </style>
   </head>
   <body>
     <div class="header">
-    <header>{% block header %}{% endblock %}</header>
+      <header>{% block header %}{% endblock %}</header>
     </div>
     {% block body %} {% endblock %}
     <div class="footer">
-    <footer>{% block footer %}{% endblock %}</footer>
+      <footer>{% block footer %}{% endblock %}</footer>
     </div>
   </body>
 </html>

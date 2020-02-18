@@ -70,7 +70,11 @@ class Database extends \Core\Model
         {
             $db = static::getDB();
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = "DELETE FROM $tableName WHERE id = " . $id;
+            if ($tableName == 'products_categories') {
+                $stmt = "DELETE FROM $tableName WHERE product_id = " . $id;
+            } else {
+                $stmt = "DELETE FROM $tableName WHERE id = " . $id;
+            }
             $db->exec($stmt);
 
         } catch (PDOException $e) {

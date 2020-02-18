@@ -21,7 +21,7 @@ class Show
         $header = Database::getAll('categories');
         $footer = Database::getAll('cms_pages');
         $categories = Database::getAll('categories', "WHERE parent = '" . $category . "'");
-        echo $categories;
-       // View::renderTemplate('showproducts.html', ['header' => $header, 'products' => $products, 'footer' => $footer]);
+
+        View::renderTemplate('showproducts.html', ['header' => $header, 'products' => $products, 'footer' => $footer]);
     }
 }

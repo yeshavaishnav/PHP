@@ -1,14 +1,11 @@
 {% extends "base.html" %} {% block title%} {% for c in content %}
 {{c.pageTitle}} {% endfor %} {% endblock %} {% block header %}
-<!-- <div class="dropdown">  -->
+
 {% for h in header %}
 <a href="show\showcategories?category={{h.parent}}">{{h.parent}}</a>
-<!-- <button class="dropbtn">{{h.parent}}</button>
-<div class="dropdown-content">
-    <a href=""></a>
-</div> -->
+
 {% endfor %}
-<!-- </div> -->
+
 {% endblock %} {% block body %} {% for c in content %}
 <h2>{{c.pageTitle }}</h2>
 <p>{{c.content}}</p>

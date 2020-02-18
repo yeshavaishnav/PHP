@@ -19,6 +19,19 @@ class Database extends \Core\Model
         }
 
     }
+    public static function getDistinct($table, $param, $condition = "")
+    {
+        try
+        {
+            $db = static::getDB();
+            $stmt = $db->query("SELECT DISTINCT $param FROM $table " . $condition);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
     public static function insertData($tableName, $params, $values)
     {
         try
@@ -34,6 +47,7 @@ class Database extends \Core\Model
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = "INSERT INTO " . $tableName . " (" . $params . ") VALUES (" . $values . ")";
             $db->exec($stmt);
+            return $db->lastInsertId();
 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

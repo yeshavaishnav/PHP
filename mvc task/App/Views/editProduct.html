@@ -12,7 +12,11 @@ body %}
     </tr>
     <tr>
       <td>Category</td>
-      <td><input type="text" name="category" value="{{p.category}}" /></td>
+      <td><select name="category[]" multiple>
+        {% for c in categories %}
+        <option value="{{c.categoryName}}">{{c.categoryName}}</option>
+        {% endfor %}
+      </select></td>
     </tr>
     <tr>
       <td>SKU:</td>

@@ -23,8 +23,12 @@
     </style>
   </head>
   <body>
+    <div class="header">
     <header>{% block header %}{% endblock %}</header>
+    </div>
     {% block body %} {% endblock %}
+    <div class="footer">
     <footer>{% block footer %}{% endblock %}</footer>
+    </div>
   </body>
 </html>

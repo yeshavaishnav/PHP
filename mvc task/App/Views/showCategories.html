@@ -1,0 +1,15 @@
+{% extends "baselayout.html" %} {% block title %}Categories{% endblock %} {% block
+    header %} {% for h in header %}
+    <a href="\show\showcategories?category={{h.parent}}">{{h.parent}}</a>
+    {% endfor %} {% endblock %} {% block body %} {%for c in categories%}
+    <div class="child">
+    <img src="/{{c.image}}" height="100px" width="100px">
+    <a href="\show\showproduct?category={{c.categoryName}}">{{c.categoryName}}</a>
+    {{c.status}}
+    {{c.description}}
+    {{c.parent}}
+    </div>
+    {%endfor%} {% endblock %} {% block footer %} {% for f in footer %}
+    <a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
+    {% endfor %} {% endblock %}
+    

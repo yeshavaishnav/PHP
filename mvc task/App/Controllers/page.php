@@ -8,7 +8,7 @@ class Page
 {
     public function display($url)
     {
-        $header = Database::getAll('categories');
+        $header = Database::getDistinct('categories','parent');
         $footer = Database::getAll('cms_pages');
         $data = Database::getAll('cms_pages', "WHERE urlKey = '" . $url . "'");
         if ($data) {

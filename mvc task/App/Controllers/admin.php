@@ -37,7 +37,8 @@ class Admin extends \Core\Controller
     }
     public function addProduct()
     {
-        View::renderTemplate('addProduct.html');
+        $category = Database::getAll('categories');
+        View::renderTemplate('addProduct.html',['categories'=>$category]);
     }
     public function addCategory()
     {
@@ -64,11 +65,17 @@ class Admin extends \Core\Controller
         $params = array('categoryName', 'urlKey', 'image', 'status', 'description', 'parent');
         $values = array();
         foreach ($params as $item) {
-            array_push($values, "'" . $_POST[$item] . "'");
+            $val = $_POST[$item];
+
+            if (is_array($val)) {
+                $val = implode(',', $val);
+            }
+            array_push($values, "'" . $val . "'");
         }
         $params = implode(',', $params);
         $values = implode(',', $values);
-        Database::insertData('categories', $params, $values);
+        $category_id = Database::insertData('categories', $params, $values);
+
         header('Location:categories');
     }
     public function insertProduct()
@@ -76,12 +83,19 @@ class Admin extends \Core\Controller
         $params = array('productName', 'category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
         $values = array();
         foreach ($params as $item) {
-            array_push($values, "'" . $_POST[$item] . "'");
+            $val = $_POST[$item];
+
+            if (is_array($val)) {
+                $val = implode(',', $val);
+            }
+            array_push($values, "'" . $val . "'");
         }
+
         $params = implode(',', $params);
         $values = implode(',', $values);
-        Database::insertData('products', $params, $values);
-        header('Location:products');
+        $product_id = Database::insertData('products', $params, $values);
+        
+       header('Location:products');
     }
     public function editc()
     {
@@ -117,18 +131,24 @@ class Admin extends \Core\Controller
     public function editp()
     {
         $_SESSION['product_id'] = $_GET['id'];
+        $category = Database::getAll('categories');
         $product = Database::getAll('products', 'WHERE id = ' . $_GET['id']);
-        View::renderTemplate('editProduct.html', ['product' => $product]);
+        View::renderTemplate('editProduct.html', ['product' => $product, 'categories'=>$category]);
     }
     public function editProduct()
     {
         $params = array('productName', 'category', 'SKU', 'urlKey', 'image', 'status', 'description', 'shortDescription', 'price', 'stock');
         $values = array();
         foreach ($params as $item) {
-            array_push($values, "'" . $_POST[$item] . "'");
+            $val = $_POST[$item];
+            if (is_array($val)) {
+                $val = implode(',', $val);
+            }
+            array_push($values, "'" . $val . "'");
         }
         $preparedString = array();
         foreach ($params as $key => $value) {
+            $val = $values[$key];
             $str = $params[$key] . " = " . $values[$key];
             array_push($preparedString, $str);
         }

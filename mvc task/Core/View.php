@@ -1,7 +1,9 @@
 <?php
 
 namespace Core;
+
 use Twig;
+
 class View
 {
     public static function render($view, $args = [])

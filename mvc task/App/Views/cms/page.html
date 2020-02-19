@@ -1,14 +1,29 @@
-{% extends "base.html" %} {% block title%} {% for c in content %}
-{{c.pageTitle}} {% endfor %} {% endblock %} {% block header %}
-
-{% for h in header %}
-<a href="show\showcategories?category={{h.parent}}">{{h.parent}}</a>
-
-{% endfor %}
-
-{% endblock %} {% block body %} {% for c in content %}
-<h2>{{c.pageTitle }}</h2>
-<p>{{c.content}}</p>
-{% endfor %} {% endblock %} {% block footer %} {% for f in footer %}
-<a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
-{% endfor %} {% endblock %}
+<html>
+  <head>
+    <title>
+      {% for c in content %} {{c.pageTitle}} {% endfor %}
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+        {% block header %} {% for h in header %}
+        <div class="dropdown">
+          <button class="dropbtn">{{h.parent}}</button>
+          <div class="dropdown-content">
+            {% for c in categories%} {% if c.parent == h.parent %}
+            <a href="show\showproduct?category={{c.categoryName}}"
+              >{{c.categoryName}}</a>
+            {% endif %} {%endfor%}
+          </div>
+        </div>
+        {% endfor %} {% endblock %}
+      </div>
+      
+    <div class="footer">
+      {% block footer %} {% for f in footer %}
+      <a href="/{{f.urlKey}}">{{f.pageTitle}}</a>
+      {% endfor %} {% endblock %}
+    </div>
+  </body>
+</html>

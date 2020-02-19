@@ -10,8 +10,7 @@
         <button class="dropbtn">{{h.parent}}</button>
         <div class="dropdown-content">
           {% for c in categories%} {% if c.parent == h.parent %}
-          <a href="show\showproduct?category={{c.categoryName}}"
-            >{{c.categoryName}}</a>
+          <a href="showproduct?category={{c.categoryName}}">{{c.categoryName}}</a>
           {% endif %} {%endfor%}
         </div>
       </div>

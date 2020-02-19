@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Edit CMS Pages</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h2>Edit CMS Page</h2>
@@ -10,7 +10,9 @@
       <table cellpadding="5px">
         <tr>
           <td>Page Title:</td>
-          <td><input type="text" name="pageTitle" value="{{c.pageTitle}}" /></td>
+          <td>
+            <input type="text" name="pageTitle" value="{{c.pageTitle}}" />
+          </td>
         </tr>
         <tr>
           <td>Url Key:</td>
@@ -30,10 +32,8 @@
           </td>
         </tr>
       </table>
-    
+
       {% endfor %}
     </form>
-    
-    
   </body>
 </html>

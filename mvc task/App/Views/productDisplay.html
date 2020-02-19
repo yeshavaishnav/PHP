@@ -5,19 +5,18 @@
   </head>
   <body>
     <div class="header">
-      {% block header %} {% for h in header %}
-      <div class="dropdown">
-        <button class="dropbtn">{{h.parent}}</button>
-        <div class="dropdown-content">
-          {% for c in categories%} {% if c.parent == h.parent %}
-          <a href="show\showproduct?category={{c.categoryName}}"
-            >{{c.categoryName}}</a
-          >
-          {% endif %} {%endfor%}
+        {% block header %} {% for h in header %}
+        <div class="dropdown">
+          <button class="dropbtn">{{h.parent}}</button>
+          <div class="dropdown-content">
+            {% for c in categories%} {% if c.parent == h.parent %}
+            <a href="showproduct?category={{c.categoryName}}"
+              >{{c.categoryName}}</a>
+            {% endif %} {%endfor%}
+          </div>
         </div>
-      </div>
-    </div>
-    {% endfor %} {% endblock %} {% block body %}
+        {% endfor %} {% endblock %}
+      </div> {% block body %}
     <div class="container">
       {%for p in products%}
 

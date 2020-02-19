@@ -24,19 +24,10 @@ a {
   flex-direction: row;
 }
 .child {
-  width: 120px;
+  width: 130px;
 }
-.header {
-  top: 0;
-}
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  text-align: center;
-}
+
+
 .header {
   height: 30px;
   padding: 10px;
@@ -44,6 +35,9 @@ a {
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
+  right: 0;
+ text-align: center;
 }
 
 .footer {
@@ -55,13 +49,15 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
+  text-align: center;
 }
 
   .dropbtn {
     background-color:cornflowerblue ;
-    color: white;
+    color: black;
     border: none;
     padding: 10px;
+    font-size: 15px; 
     
   }
   
@@ -70,6 +66,8 @@ a {
     display: none;
     position: absolute;
   background-color: #f9f9f9;
+  width: 120px;
+  
   }
   .dropdown:hover .dropdown-content {
     display: block;
@@ -77,15 +75,22 @@ a {
   .dropdown {
     position: relative;
     display: inline-block;
+    
   }
   .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 12px 12px;
     text-decoration: none;
     display: block;
+    font-size: medium;
+
   }
   .body
   {
     margin-top: 150px;
+  }
+  a{
+    color: black;
+   
   }
   

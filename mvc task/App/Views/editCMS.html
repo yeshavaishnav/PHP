@@ -1,33 +1,39 @@
-{% extends "base.html" %} {% block title %}Edit CMS Page {% endblock %} {% block
-body %}
-<h2>Edit CMS Page</h2>
-<form method="POST" action="editcmspage">
-  {% for c in cms %}
-  <table cellpadding="5px">
-    <tr>
-      <td>Page Title:</td>
-      <td><input type="text" name="pageTitle" value="{{c.pageTitle}}" /></td>
-    </tr>
-    <tr>
-      <td>Url Key:</td>
-      <td><input type="text" name="urlKey" value="{{c.urlKey}}" /></td>
-    </tr>
-    <tr>
-      <td>Status:</td>
-      <td><input type="text" name="status" value="{{c.status}}" /></td>
-    </tr>
-    <tr>
-      <td>Content:</td>
-      <td><input type="text" name="content" value="{{c.content}}" /></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <input type="submit" name="edit" value="EDIT" />
-      </td>
-    </tr>
-  </table>
-
-  {% endfor %}
-</form>
-
-{% endblock %}
+<html>
+  <head>
+    <title>Edit CMS Pages</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h2>Edit CMS Page</h2>
+    <form method="POST" action="editcmspage">
+      {% for c in cms %}
+      <table cellpadding="5px">
+        <tr>
+          <td>Page Title:</td>
+          <td><input type="text" name="pageTitle" value="{{c.pageTitle}}" /></td>
+        </tr>
+        <tr>
+          <td>Url Key:</td>
+          <td><input type="text" name="urlKey" value="{{c.urlKey}}" /></td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td><input type="text" name="status" value="{{c.status}}" /></td>
+        </tr>
+        <tr>
+          <td>Content:</td>
+          <td><input type="text" name="content" value="{{c.content}}" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" name="edit" value="EDIT" />
+          </td>
+        </tr>
+      </table>
+    
+      {% endfor %}
+    </form>
+    
+    
+  </body>
+</html>

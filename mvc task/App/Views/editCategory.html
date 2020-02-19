@@ -1,6 +1,10 @@
-{% extends "base.html" %} {% block title %}Edit Category{% endblock %} {% block
-body %}
-<h2>Edit Category</h2>
+<html>
+  <head>
+    <title>Edit Category</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h2>Edit Category</h2>
 <form method="POST" action="editcategory">
   {% for c in category %}
   <table cellpadding="5px">
@@ -49,4 +53,7 @@ body %}
   {% endfor %}
 </form>
 
-{% endblock %}
+  </body>
+
+</html>
+

@@ -1,47 +1,54 @@
-{% extends "base.html" %} {% block title %}Add Category{% endblock %} {% block
-body %}
-<h2>Add Category</h2>
-<form method="POST" action="insertcategory">
-  <table cellpadding="5px">
-    <tr>
-      <td>Category name:</td>
-      <td><input type="text" name="categoryName" /></td>
-    </tr>
-    <tr>
-      <td>Url Key:</td>
-      <td><input type="text" name="urlKey" /></td>
-    </tr>
-    <tr>
-      <td>Image:</td>
-      <td><input type="file" name="image" accept="image/*" /></td>
-    </tr>
-    <tr>
-      <td>Status:</td>
-      <td><input type="text" name="status" /></td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><input type="text" name="description" /></td>
-    </tr>
-    <tr>
-      <td>Parent:</td>
-      <td>
-        <select name="parent">
-          <option value="Eletronics">Electronics</option>
-          <option value="Kitchen appliances">Kitchen appliances</option>
-          <option value="Clothes">Clothes</option>
-          <option value="Footwear">Footwear</option>
-          <option value="Grocery">Grocery</option>
-          <option value="Cosmetics">Cosmetics</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <input type="submit" name="add" value="ADD" />
-      </td>
-    </tr>
-  </table>
-</form>
-
-{% endblock %}
+<html>
+  <head>
+    <title>Add Category</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h2>Add Category</h2>
+    <form method="POST" action="insertcategory">
+      <table cellpadding="5px">
+        <tr>
+          <td>Category name:</td>
+          <td><input type="text" name="categoryName" /></td>
+        </tr>
+        <tr>
+          <td>Url Key:</td>
+          <td><input type="text" name="urlKey" /></td>
+        </tr>
+        <tr>
+          <td>Image:</td>
+          <td><input type="file" name="image" accept="image/*" /></td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td><input type="text" name="status" /></td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td><input type="text" name="description" /></td>
+        </tr>
+        <tr>
+          <td>Parent:</td>
+          <td>
+            <select name="parent">
+              <option value="Eletronics">Electronics</option>
+              <option value="Kitchen appliances">Kitchen appliances</option>
+              <option value="Clothes">Clothes</option>
+              <option value="Footwear">Footwear</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Cosmetics">Cosmetics</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" name="add" value="ADD" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    
+  
+    
+  </body>
+</html>

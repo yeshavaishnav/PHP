@@ -19,7 +19,14 @@
         </div>
         {% endfor %} {% endblock %}
       </div>
-      
+      {% block body %}
+      <div class="body">
+        {% for c in content%}
+        <h2>{{c.pageTitle}}</h2>
+        <p>{{c.content}}</p>
+        {% endfor %}
+      </div>
+      {% endblock %}
     <div class="footer">
       {% block footer %} {% for f in footer %}
       <a href="/{{f.urlKey}}">{{f.pageTitle}}</a>

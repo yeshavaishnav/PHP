@@ -1,60 +1,67 @@
-{% extends "base.html" %} {% block title %}Add Product{% endblock %} {% block
-body %}
-<h2>Add Product</h2>
-<form method="POST" action="insertproduct">
-  <table cellpadding="5px">
-    <tr>
-      <td>Product name:</td>
-      <td><input type="text" name="productName" /></td>
-    </tr>
-    <tr>
-      <td>Category</td>
-      <td>
-        <select name="category">
-          {% for c in categories %}
-          <option value="{{c.categoryName}}">{{c.categoryName}}</option>
-          {% endfor %}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>SKU:</td>
-      <td><input type="text" name="SKU" /></td>
-    </tr>
-    <tr>
-      <td>Url Key:</td>
-      <td><input type="text" name="urlKey" /></td>
-    </tr>
-    <tr>
-      <td>Image:</td>
-      <td><input type="file" name="image" accept="image/*" /></td>
-    </tr>
-    <tr>
-      <td>Status:</td>
-      <td><input type="text" name="status" /></td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><input type="text" name="description" /></td>
-    </tr>
-    <tr>
-      <td>Short description:</td>
-      <td><input type="text" name="shortDescription" /></td>
-    </tr>
-    <tr>
-      <td>Price:</td>
-      <td><input type="text" name="price" /></td>
-    </tr>
-    <tr>
-      <td>Stock:</td>
-      <td><input type="text" name="stock" /></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <input type="submit" name="add" value="ADD" />
-      </td>
-    </tr>
-  </table>
-</form>
-
-{% endblock %}
+<html>
+<head>
+  <title>Categories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Add Product</h2>
+  <form method="POST" action="insertproduct">
+    <table cellpadding="5px">
+      <tr>
+        <td>Product name:</td>
+        <td><input type="text" name="productName" /></td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td>
+          <select name="category">
+            {% for c in categories %}
+            <option value="{{c.categoryName}}">{{c.categoryName}}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>SKU:</td>
+        <td><input type="text" name="SKU" /></td>
+      </tr>
+      <tr>
+        <td>Url Key:</td>
+        <td><input type="text" name="urlKey" /></td>
+      </tr>
+      <tr>
+        <td>Image:</td>
+        <td><input type="file" name="image" accept="image/*" /></td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td><input type="text" name="status" /></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><input type="text" name="description" /></td>
+      </tr>
+      <tr>
+        <td>Short description:</td>
+        <td><input type="text" name="shortDescription" /></td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td><input type="text" name="price" /></td>
+      </tr>
+      <tr>
+        <td>Stock:</td>
+        <td><input type="text" name="stock" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" name="add" value="ADD" />
+        </td>
+      </tr>
+    </table>
+  </form>
+  
+  </body>
+  
+  
+</html>

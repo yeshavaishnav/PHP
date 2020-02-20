@@ -35,12 +35,14 @@
     <tr>
       <td>Parent:</td>
       <td><select name="parent">
-        <option value="Eletronics">Electronics</option>
-        <option value="Kitchen appliances">Kitchen appliances</option>
-        <option value="Clothes">Clothes</option>
-        <option value="Footwear">Footwear</option>
-        <option value="Grocery">Grocery</option>
-        <option value="Cosmetics">Cosmetics</option>
+        <option value="Eletronics" {% if c.parent == 'Electronics'%} selected {% endif %}>Electronics
+          
+        </option>
+        <option value="Kitchen appliances" {% if c.parent == 'Kitchen appliances'%} selected {% endif %}>Kitchen appliances</option>
+        <option value="Clothes" {% if c.parent == 'Clothes'%} selected {% endif %}>Clothes</option>
+        <option value="Footwear" {% if c.parent == 'Footwear'%} selected {% endif %}>Footwear</option>
+        <option value="Grocery" {% if c.parent == 'Grocery'%} selected {% endif %}>Grocery</option>
+        <option value="Cosmetics" {% if c.parent == 'Cosmetics'%} selected {% endif %}>Cosmetics</option>
       </select></td>
     </tr>
     <tr>

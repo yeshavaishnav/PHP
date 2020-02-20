@@ -2,31 +2,30 @@ table {
   border-collapse: collapse;
   border-left: none;
   border-right: none;
+  margin: 30px;
 }
-header,
-footer {
-  height: 50px;
-  text-align: center;
-  
-}
+
 a {
   padding: 10px;
   font-size: 17px;
   text-decoration: none;
+  color: black;
+  
+
 }
 .container {
+  display: flex;
+  flex-direction: row;
+  margin: 100px;
+}
+.product {
   display: flex;
   flex-direction: column;
   margin: 100px;
 }
-.content {
-  display: flex;
-  flex-direction: row;
-}
 .child {
   width: 130px;
 }
-
 
 .header {
   height: 30px;
@@ -37,7 +36,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
- text-align: center;
+  text-align: center;
 }
 
 .footer {
@@ -52,45 +51,70 @@ a {
   text-align: center;
 }
 
-  .dropbtn {
-    background-color:cornflowerblue ;
-    color: black;
-    border: none;
-    padding: 10px;
-    font-size: 15px; 
-    
-  }
-  
-  .dropdown-content
-  {
-    display: none;
-    position: absolute;
+.dropbtn {
+  background-color: cornflowerblue;
+  color: black;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
   background-color: #f9f9f9;
   width: 120px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+  font-size: medium;
+}
+.body {
+  margin-top: 150px;
   
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    
-  }
-  .dropdown-content a {
-    color: black;
-    padding: 12px 12px;
-    text-decoration: none;
-    display: block;
-    font-size: medium;
+}
 
-  }
-  .body
-  {
-    margin-top: 150px;
-  }
-  a{
-    color: black;
-   
-  }
+button,input[type="submit"],input[type="button"]{
   
+  background-color: cornflowerblue;
+  border: none;
+  padding: 10px;
+  border-radius: 7px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
+button:hover
+{
+  background-color: rgb(151, 180, 241);
+}
+body
+{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+input[type="text"],input[type="password"],select
+{
+  height: 25px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+img
+{
+  border-radius: 20px;
+}
+a:hover{
+  color: blue;
+}
+p,h2{
+  text-align: center;
+}

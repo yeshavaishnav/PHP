@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title> </title>
+    <title>Products </title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
@@ -19,10 +19,17 @@
      {% block body %}
     <div class="container">
       {%for p in products%}
+      {% if p.status == 'available' %}
       <div class="child">
         <img src="/{{p.image}}" height="100px" width="100px" />
         <a href="\show\product?product={{p.productName}}">{{p.productName}}</a>
       </div>
+      {% else %}
+      <div class="child">
+      {{p.productName}}
+      <p>Product not available</p>
+      </div>
+      {% endif %}
       {%endfor%}
     </div>
     {% endblock %}

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>AJAX example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            
+            $(document).ready(function()
+            {
+                $("button").click(function()
+                {
+                    $.ajax({
+                        method:"POST",
+                url:"abc.php",
+                success: function(result)
+                {
+                    alert(result);
+                }
+             }); 
+            });
+            });
+                
+            
+        </script>
+        <body>
+            <div id="div1">
+                <p name="count" id="count">0</p>
+                </div>
+                <button>CLick</button>
+        </body>
+    </head>
+</html>

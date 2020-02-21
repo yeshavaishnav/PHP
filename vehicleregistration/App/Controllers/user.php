@@ -61,7 +61,7 @@ class User
         $params = [];
         $values = [];
 
-      
+        
         foreach ($_POST['service'] as $key => $value) {
             array_push($params, $key);
             array_push($values, "'" . $value . "'");
@@ -72,11 +72,6 @@ class User
         $values = implode(',', $values);
 
         $checkVehicle = Database::getAll('service_registration', "WHERE vehicleNo = " . $_POST['service']['vehicleNo']);
-        $date = $_POST['service']['date'];
-        $today = date('d:m:Y',time());
-        
-       
-        $result = Database::getAll('service_registration', "WHERE date = " . $date . " AND timeslot = " . $_POST['service']['timeslot']);
         
         $checkLicense = Database::getAll('service_registration', "WHERE licenseNo = " . $_POST['service']['licenseNo']);
         if ($checkVehicle) {
@@ -84,19 +79,12 @@ class User
         } else if ($checkLicense) {
             View::renderTemplate('/serviceRegister.html', ['error' => 'License Number must be unique']);
 
-        } else if (count($result)>=3) {
-            View::renderTemplate('/serviceRegister.html', ['error' => 'Timeslot Unavailable']);
-        }
-        else if($date < $today)
-        {
-            View::renderTemplate('/serviceRegister.html', ['error' => 'You cannot enter past dates']);
-
-        } else {
+        } 
+         else {
             Database::insertdata('service_registration', $params, $values);
 
             $res = Database::getAll('service_registration', "WHERE user_id = '" . $_SESSION['user_id'] . "'");
             View::renderTemplate('\userDashboard.html', ['res' => $res]);
         }
-
     }
 }

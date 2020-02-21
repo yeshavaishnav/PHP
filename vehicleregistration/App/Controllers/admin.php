@@ -38,6 +38,9 @@ class Admin
         }
         $preparedString = implode(',',$preparedString);
          Database::updateData('service_registration',$preparedString,"WHERE service_id = ".$_SESSION['service_id']);
+         $registration = Database::getAll('service_registration');
+        View::renderTemplate('adminDashboard.html', ['registration' => $registration]);
+
     }
 }
 

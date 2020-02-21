@@ -18,6 +18,18 @@ class Database extends \Core\Model
             echo "Error: " . $e->getMessage();
         }
     }
+    public static function getCount($table, $condition = "")
+    {
+        try
+        {
+            $db = static::getDB();
+            $stmt = $db->query("SELECT count('service_id') FROM " . $table . " " . $condition);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
     public static function getDistinct($table, $param, $condition = "")
     {
         try

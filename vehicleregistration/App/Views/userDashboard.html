@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>User Dashboard</title>
+    </head>
+    <body>
+        <button onclick="location.href='/user/serviceregister'">Add Service Registration</button>
+
+
+        {% if res %}
+        <table>
+            <tr>
+                
+                <th>Title</th>
+                <th>Vehicle Number</th>
+                <th>License Number</th>
+                <th>Date</th>
+                <th>Timeslot</th>
+                <th>Status</th>
+                
+            </tr>
+            {% for r in res %}
+            <tr>
+                
+                <td>{{r.title}}</td>
+                <td>{{r.vehicleNo}}</td>
+                <td>{{r.licenseNo}}</td>
+                <td>{{r.date}}</td>
+                <td>{{r.timeslot}}</td>
+                <td>{{r.status}}</td>
+                
+            </tr>
+
+            {% endfor %}
+        </table>
+        {% else %}
+        No registrations yet!
+        {% endif %}
+    </body>
+</html>

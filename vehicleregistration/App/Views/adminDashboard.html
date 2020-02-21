@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Admin Dashboard</title>
+    </head>
+    <body>
+        {% if registration %}
+        <table>
+            <tr>
+                <th>User id</th>
+                <th>Title</th>
+                <th>Vehicle Number</th>
+                <th>License Number</th>
+                <th>Date</th>
+                <th>Timeslot</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for r in registration %}
+            <tr>
+                <td> 
+                    {{r.user_id}}
+                </td>
+                <td>{{r.title}}</td>
+                <td>{{r.vehicleNo}}</td>
+                <td>{{r.licenseNo}}</td>
+                <td>{{r.date}}</td>
+                <td>{{r.timeslot}}</td>
+                <td>{{r.status}}</td>
+                <td><a href="edit?id={{r.service_id}}">Edit</a>
+                <a href="status?id={{r.service_id}}">Approve</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </table>
+        {% else %}
+        No registrations yet!
+        {% endif %}
+
+    </body>
+</html>

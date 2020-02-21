@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Service Registration</title>
+    </head>
+    <body>
+        <p id="error">
+            {{error}}
+        </p>
+        <form method="POST" action="/user/registerservice">
+            <table>
+                <tr>
+                    <td>Title: </td>
+                    <td><input type="text" name="service[title]"></td>
+                </tr>
+                <tr>
+                    <td>Vehicle Number: </td>
+                    <td><input type="text" name="service[vehicleNo]"></td>
+                </tr>
+                <tr>
+                    <td>License Number: </td>
+                    <td><input type="text" name="service[licenseNo]"></td>
+                </tr>
+                <tr>
+                    <td>Date: </td>
+                    <td><input type="date" name="service[date]"></td>
+                </tr>
+                <tr>
+                    <td>Timeslot: </td>
+                    <td>
+                        <select name="service[timeslot]">
+                            <option value="9-10">9-10</option>
+                            <option value="10-11">10-11</option>
+                            <option value="11-12">11-12</option>
+                            <option value="12-1">12-1</option>
+                            <option value="1-2">1-2</option>
+                            <option value="2-3">2-3</option>
+                            <option value="3-4">3-4</option>
+                            <option value="4-5">4-5</option>
+                            <option value="5-6">5-6</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Issue: </td>
+                    <td><input type="text" name="service[issue]"></td>
+                </tr>
+                <tr>
+                    <td>Service Center: </td>
+                    <td>
+                        <select name="service[servicecenter]">
+                            <option value="maruti">Maruti</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="honda">Honda</option>
+                            <option value="mahindra">Mahindra</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="addService" value="Register Service">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

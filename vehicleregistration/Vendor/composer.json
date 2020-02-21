@@ -1,0 +1,21 @@
+{
+    "name": "composer",
+    "type": "library",
+    "description": "Composer.json file",
+    "require": {
+        
+        "twig/twig": "~1.0",
+        "phpmailer/phpmailer": "~5.2"
+        
+    },
+    "autoload": {
+        "psr-4" : {
+            "Core\\" : "Core/",
+            "App\\" : "App/" ,
+            "Models\\" : "Model/"      
+
+        }
+        }
+    
+}
+

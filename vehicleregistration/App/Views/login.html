@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <form method="post" action="/user/userlogin">
+            <table>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="login" value="LOGIN"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">New User? <a href="/user/register">Sign Up</a></td>
+                </tr>
+            </table>
+
+        </form>
+    </body>
+</html>

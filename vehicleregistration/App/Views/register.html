@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <form method="POST" action="/user/userregister">
+            <table>
+                <tr>
+                    <td>First Name: </td>
+                    <td><input type="text" name="user[firstname]"></td>
+                </tr>
+                <tr>
+                    <td>Last Name: </td>
+                    <td><input type="text" name="user[lastname]"></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="email" name="user[email]"></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="user[password]"></td>
+                </tr>
+                <tr>
+                    <td>Phone Number: </td>
+                    <td><input type="text" name="user[phone]"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h4>Address information</h4></td>
+                </tr>
+                <tr>
+                    <td>Street: </td>
+                    <td><input type="text" name="address[street]"></td>
+                </tr>
+                <tr>
+                    <td>City: </td>
+                    <td><input type="text" name="address[city]"></td>
+                </tr>
+                <tr>
+                    <td>State: </td>
+                    <td><input type="text" name="address[state]"></td>
+                </tr>
+                <tr>
+                    <td>ZipCode: </td>
+                    <td><input type="text" name="address[zipcode]"></td>
+                </tr>
+                <tr>
+                    <td>Country: </td>
+                    <td><input type="text" name="address[country]"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="register" value="REGISTER"></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -7,11 +7,11 @@ use \App\Models\Database;
 
 class Cart
 {
-
     public function addtocart()
     {
         $id = $_GET['id'];
         $data = Database::getAll('products', "WHERE id = $id");
+        
         if (!$_SESSION['cart']) {
             $_SESSION['cart'] = array();
         }
@@ -24,9 +24,9 @@ class Cart
         $params = "user_id,productName,price,quantity";
         $values = "'" . $_SESSION['user_id'] . "','" . $data[0]['productName'] . "','" . $data[0]['price'] . "','1'";
         $id = Database::insertdata('orders', $params, $values);
-        $data = Database::getAll('orders',"WHERE id = ".$id);
+        $data = Database::getAll('orders', "WHERE id = " . $id);
         echo json_encode($data);
-
+    
     }
     public function displayCart()
     {
@@ -37,17 +37,16 @@ class Cart
     }
     public function deleteItem()
     {
-       $id =  $_GET['id'];
-        Database::deleteData('orders',$id);
-        header('Location:/show/showproduct?category='.$_SESSION["category"]);
+        $id = $_GET['id'];
+        Database::deleteData('orders', $id);
+        header('Location:/show/showproduct?category=' . $_SESSION["category"]);
 
     }
     public function deleteCart()
     {
-        Database::deleteData('orders','1  OR 1 = 1');
-        header('Location:/show/showproduct?category='.$_SESSION["category"]);
+        Database::deleteData('orders', '1  OR 1 = 1');
+        header('Location:/show/showproduct?category=' . $_SESSION["category"]);
 
     }
-
 
 }

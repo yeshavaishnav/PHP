@@ -18,7 +18,7 @@ class Router
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
 
         $route = '/^' . $route . '$/i';
-
+        
         $this->routes[$route] = $params;
     }
     public function getRoutes()
@@ -33,7 +33,6 @@ class Router
             'reg_exp2' => "/^(?P<controller>[a-z]+)\/(?P<id>\d+)\/(?P<action>[a-z]+)$/",
             'reg_exp3' => "/^admin\/(?P<action>[a-z]+)\/(?P<controller>[a-z]+)$/",
         );
-
         foreach ($reg_exp as $element => $item) {
             if (preg_match($item, $url, $matches)) {
                 $params = [];

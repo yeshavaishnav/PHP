@@ -8,7 +8,9 @@
   </head>
   <body>
     <div class="header">
-      {% block header %} {% for h in header %}
+      {% block header %} 
+      <div class="logo"><button onclick="location.href='/home/index'">My Cart</button></div>
+      {% for h in header %}
       <div class="dropdown">
         <button class="dropbtn">{{h.parent}}</button>
         <div class="dropdown-content">
@@ -39,7 +41,7 @@
         <img src="/{{p.image}}" height="150px" width="150px" />
         <a href="\show\product?product={{p.productName}}">{{p.productName}}</a>
         
-          <button class="addtocart" name="addtocart" id="{{p.id}}" onclick="getId()">Add to cart</button>
+          <input type="button" class="addtocart" name="addtocart" id="{{p.id}}" onclick="getId()" value="Add to cart">
          
       </div>
       {% else %}

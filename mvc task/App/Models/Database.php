@@ -17,7 +17,6 @@ class Database extends \Core\Model
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-
     }
     public static function getDistinct($table, $param, $condition = "")
     {
@@ -43,12 +42,10 @@ class Database extends \Core\Model
                 $stmt = "ALTER TABLE $tableName AUTO_INCREMENT = 1";
                 $db->exec($stmt);
             }
-
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = "INSERT INTO " . $tableName . " (" . $params . ") VALUES (" . $values . ")";
             $db->exec($stmt);
             return $db->lastInsertId();
-
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -60,6 +57,7 @@ class Database extends \Core\Model
             $db = static::getDB();
             $stmt = "UPDATE $tableName SET $preparedString WHERE id = $id";
             $db->exec($stmt);
+            
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

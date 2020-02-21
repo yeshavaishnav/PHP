@@ -1,4 +1,7 @@
 function getId() {
+  var button = document.getElementById(event.srcElement.id);
+  button.value = "ADDED";
+  button.style.backgroundColor = "tomato";
   return event.srcElement.id;
 }
 
@@ -43,6 +46,7 @@ $("document").ready(function() {
               result[0]["quantity"] +
               "</td><td><a href=''>Delete</a></td></tr>"
           )
+          
       }
     });
   });

@@ -2,7 +2,7 @@ table {
   border-collapse: collapse;
   border-left: none;
   border-right: none;
-  margin: 30px;
+  margin: 20px;
 }
 
 a {
@@ -10,8 +10,6 @@ a {
   font-size: 17px;
   text-decoration: none;
   color: black;
-  
-
 }
 .container {
   display: flex;
@@ -21,16 +19,17 @@ a {
 .product {
   display: flex;
   flex-direction: column;
-  margin: 100px;
+  margin: 50px;
 }
 .child {
-  width: 130px;
+  width: 150px;
+  padding: 30px;
 }
 
 .header {
   height: 30px;
-  padding: 10px;
-  background-color: cornflowerblue;
+  padding-bottom: 10px;
+  background-color: black;
   position: fixed;
   width: 100%;
   top: 0;
@@ -43,20 +42,23 @@ a {
   width: 100%;
   height: 30px;
   position: absolute;
-  background-color: cornflowerblue;
-  padding: 10px;
+  background-color: black;
+  padding-top: 10px;
   right: 0;
   bottom: 0;
   left: 0;
   text-align: center;
 }
-
+.footer a {
+  color: white;
+  font-size: 14px;
+}
 .dropbtn {
-  background-color: cornflowerblue;
-  color: black;
+  background-color: black;
+  color: white;
   border: none;
   padding: 10px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .dropdown-content {
@@ -77,44 +79,66 @@ a {
   padding: 12px 12px;
   text-decoration: none;
   display: block;
-  font-size: medium;
+  font-size: 14px;
 }
 .body {
   margin-top: 150px;
-  
 }
 
-button,input[type="submit"],input[type="button"]{
-  
-  background-color: cornflowerblue;
+button,
+input[type="submit"],
+input[type="button"] {
+  background-color: black;
+  color: white;
   border: none;
   padding: 10px;
   border-radius: 7px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-button:hover
-{
-  background-color: rgb(151, 180, 241);
+button:hover {
+  background-color: rgb(94, 95, 95);
 }
-body
-{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(255, 253, 253);
 }
-input[type="text"],input[type="password"],select
-{
+input[type="text"],
+input[type="password"],
+select {
   height: 25px;
   width: 200px;
   border-radius: 5px;
   border: 1px solid black;
 }
-img
-{
-  border-radius: 20px;
+img {
+  border-radius: 10px;
 }
-a:hover{
-  color: blue;
+a:hover {
+  color: gray;
 }
-p,h2{
-  text-align: center;
+.logout {
+  float: right;
+}
+.addtocart {
+  border-radius: 0;
+  background-color: rgb(212, 13, 46);
+  border: 1px solid black;
+  margin: 20px;
+}
+.addtocart:hover {
+  background-color: tomato;
+}
+.cart {
+  float: right;
+  width: 500px;
+}
+#cart {
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid black;
+}
+.emptyCart {
+  margin-left: 300px;
 }

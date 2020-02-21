@@ -3,21 +3,27 @@
     <title>
       {% for c in content %} {{c.pageTitle}} {% endfor %}
     </title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    
   </head>
   <body>
     <div class="header">
         {% block header %} {% for h in header %}
         <div class="dropdown">
           <button class="dropbtn">{{h.parent}}</button>
-          <div class="dropdown-content">
+          <div class="dropdown-content" id="content">
             {% for c in categories%} {% if c.parent == h.parent %}
-            <a href="show\showproduct?category={{c.categoryName}}"
+            <a href="\show\showproduct?category={{c.categoryName}}"
               >{{c.categoryName}}</a>
             {% endif %} {%endfor%}  
           </div>
+          
         </div>
+        
+        
         {% endfor %} {% endblock %}
+        <div class="logout"><button onclick="location.href='/user/logout'">Log out</button></div>
       </div>
       {% block body %}
       <div class="body">

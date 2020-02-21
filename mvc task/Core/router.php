@@ -54,7 +54,7 @@ class Router
     public function dispatch($url)
     {
         if ($url == "") {
-            $controller = 'Home';
+            $controller = 'User';
             $controller = $this->getNamespace() . $controller;
             $obj = new $controller();
             $obj->index();

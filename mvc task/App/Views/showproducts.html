@@ -2,6 +2,9 @@
   <head>
     <title>Products </title>
     <link rel="stylesheet" href="/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/script.js"></script>
+  
   </head>
   <body>
     <div class="header">
@@ -15,14 +18,29 @@
         </div>
       </div>
       {% endfor %} {% endblock %}
+      <div class="logout"><button onclick="location.href='/user/logout'">Log out</button></div>
+      </div>
     </div>
      {% block body %}
+     <div class="cart">
+      <p>cart items : </p>
+      <button onclick="location.href='/cart/deletecart'" class="emptyCart">Empty Cart</button>
+      <div class="cart-items">
+        <table id="cart" border="1">
+         
+        </table>        
+      </div>
+     </div>
     <div class="container">
+      
       {%for p in products%}
       {% if p.status == 'available' %}
       <div class="child">
-        <img src="/{{p.image}}" height="100px" width="100px" />
+        <img src="/{{p.image}}" height="150px" width="150px" />
         <a href="\show\product?product={{p.productName}}">{{p.productName}}</a>
+        
+          <button class="addtocart" name="addtocart" id="{{p.id}}" onclick="getId()">Add to cart</button>
+         
       </div>
       {% else %}
       <div class="child">
@@ -32,6 +50,7 @@
       {% endif %}
       {%endfor%}
     </div>
+   
     {% endblock %}
     <div class="footer">
       {% block footer %} {% for f in footer %}

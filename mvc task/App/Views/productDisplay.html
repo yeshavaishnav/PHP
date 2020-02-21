@@ -16,13 +16,15 @@
           </div>
         </div>
         {% endfor %} {% endblock %}
+        <div class="logout"><button onclick="location.href='/user/logout'">Log out</button></div>
+      </div>
       </div> {% block body %}
   
       {%for p in products%}
       <div class="product">
             <h2>{{p.productName}}</h2>
       
-      <img src="/{{p.image}}" height="80px" width="80px" />
+      <img src="/{{p.image}}" height="150px" width="150px" />
       <br />
       Description : {{p.description}}
       <br />
@@ -30,7 +32,10 @@
       <br />
       Quantity : {{p.stock}}
        {%endfor%}
+       
       </div>
+      
+      
     {% endblock %}
     <div class="footer">
       {% block footer %} {% for f in footer %}

@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use \App\Models\Database;
 use \Core\View;
-
 session_start();
 
 class Admin extends \Core\Controller
@@ -164,6 +163,7 @@ class Admin extends \Core\Controller
         $timestamp = date('d:m:Y H:i:s', time());
         array_push($preparedString, "updatedAt = '" . $timestamp . "'");
         $preparedString = implode(',', $preparedString);
+        
         Database::updateData('products', $preparedString, $_SESSION['product_id']);
         header('Location:products');
     }
@@ -204,5 +204,6 @@ class Admin extends \Core\Controller
         Database::deleteData('cms_pages', $id);
         header('Location: cmspages');
     }
+    
 
 }

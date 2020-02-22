@@ -1,6 +1,17 @@
 <html>
     <head>
         <title>Service Registration</title>
+        <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
+        type="text/css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function () {
+        $("#date").datepicker({
+            minDate: 0
+        });
+    });
+        </script>
     </head>
     <body>
         <p id="error">
@@ -22,7 +33,7 @@
                 </tr>
                 <tr>
                     <td>Date: </td>
-                    <td><input type="date" name="service[date]"></td>
+                    <td><input type="text" name="service[date]" id="date"></td>
                 </tr>
                 <tr>
                     <td>Timeslot: </td>

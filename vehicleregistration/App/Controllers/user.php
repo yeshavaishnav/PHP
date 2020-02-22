@@ -37,7 +37,7 @@ class User
         }
         $params = implode(',', $params);
         $values = implode(',', $values);
-        
+
         $id = Database::insertdata('users', $params, $values);
         $params = [];
         $values = [];
@@ -54,14 +54,16 @@ class User
     }
     public function serviceRegister()
     {
-        View::renderTemplate('\serviceRegister.html');
+        $date = date('Y:m:d',time());
+        View::renderTemplate('\serviceRegister.html',['dates'=>$date]);
     }
     public function registerService()
     {
+        $result = Database::getAll('service_registration', "WHERE date = '" . $_POST['service']['date'] . "' AND timeslot = '" . $_POST['service']['timeslot'] . "'");
+
         $params = [];
         $values = [];
 
-        
         foreach ($_POST['service'] as $key => $value) {
             array_push($params, $key);
             array_push($values, "'" . $value . "'");
@@ -72,19 +74,21 @@ class User
         $values = implode(',', $values);
 
         $checkVehicle = Database::getAll('service_registration', "WHERE vehicleNo = " . $_POST['service']['vehicleNo']);
-        
+
         $checkLicense = Database::getAll('service_registration', "WHERE licenseNo = " . $_POST['service']['licenseNo']);
         if ($checkVehicle) {
             View::renderTemplate('/serviceRegister.html', ['error' => 'Vehicle Number must be unique']);
         } else if ($checkLicense) {
             View::renderTemplate('/serviceRegister.html', ['error' => 'License Number must be unique']);
 
-        } 
-         else {
+        } else if($result = Database::getAll('service_registration', "WHERE date = '" . $_POST['service']['date'] . "' AND timeslot = '" . $_POST['service']['timeslot'] . "'")){ if(count($result[0]) >= 3) {
+            View::renderTemplate('/serviceRegister.html', ['error' => 'Timeslot unavailable']);
+        }} else {
             Database::insertdata('service_registration', $params, $values);
 
             $res = Database::getAll('service_registration', "WHERE user_id = '" . $_SESSION['user_id'] . "'");
             View::renderTemplate('\userDashboard.html', ['res' => $res]);
         }
     }
+
 }
